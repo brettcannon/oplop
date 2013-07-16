@@ -14,6 +14,13 @@ Generate account passwords based on a nickname and a master password.
 * [Perl](http://search.cpan.org/~mdom/Digest-Oplop/) (third-party)
 
 
+## Help
+
+* [+Oplop](https://plus.google.com/107738569015002517928/posts) on Google+
+* [Help/wiki pages](https://github.com/brettcannon/oplop/wiki)
+* [Issues](https://github.com/brettcannon/oplop/issues)
+
+
 ## How It Works
 
 ### In Plain English
