@@ -16,7 +16,7 @@ Generate account passwords based on a nickname and a master password.
 
 ## Help
 
-* [+Oplop](https://plus.google.com/107738569015002517928/posts) on Google+
+* [+Oplop](https://plus.google.com/107738569015002517928/posts) on [Google+](https://plus.google.com/)
 * [Help/wiki pages](https://github.com/brettcannon/oplop/wiki)
 * [Issues](https://github.com/brettcannon/oplop/issues)
 
