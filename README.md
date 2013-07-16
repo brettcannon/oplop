@@ -1,6 +1,18 @@
-# oplop
+# Oplop
 
 Generate account passwords based on a nickname and a master password.
+
+## Implementations
+
+* [Web](https://oplop.appspot.com)
+* [Google Chome](https://chrome.google.com/webstore/detail/oplop/bjgihiafnlohlfegcngpknnjidiikblj)
+* Emacs
+* SL4A
+* [Command-line](https://pypi.python.org/pypi/Oplop)
+* J2ME
+* [webOS](http://developer.palm.com/webChannel/index.php?packageid=com.googlecode.oplop)
+* [Perl](http://search.cpan.org/~mdom/Digest-Oplop/) (third-party)
+
 
 ## How It Works
 
