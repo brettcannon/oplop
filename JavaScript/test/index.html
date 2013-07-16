@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>QUnit Tests</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <link rel="stylesheet" href="qunit/testsuite.css" type="text/css"
+            media="screen">
+
+	<script type="text/javascript" src="qunit/jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="qunit/testrunner.js"></script>
+
+        <script type="text/javascript" src="../md5.js"></script>
+        <script type="text/javascript" src="../oplop.js"></script>
+
+        <script type="text/javascript" src="testdata.js"></script>
+        <script type="text/javascript">
+            module("algorithm");
+
+            function createTest(label, master, expected) {
+                return function() {
+                    expect(1);
+
+                    var created = oplop.accountPassword(label, master);
+                    equals(created, expected);
+                }
+            };
+
+            for (var x=0; x < testdata.length; x+=1) {
+                var data = testdata[x];
+                var label = data['label'];
+                var master = data['master'];
+                var expected = data['password'];
+
+                test(data['why'], createTest(label, master, expected));
+            }
+        </script>
+</head>
+<body class="flora">
+	<div id="main" style="display:none;">
+	</div>
+</body>
+</html>

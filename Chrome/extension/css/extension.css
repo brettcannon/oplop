@@ -1,0 +1,73 @@
+html { /* Work around a bug in Chrome 9 dev; taking into account padding. */
+    width: 340px;
+}
+
+body {
+    /* HVGA is 320x480. */
+    width: 320px;
+}
+
+p, .note {
+    margin: 8px;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+header, footer {
+    display: block;
+    width: 100%;
+    border-style: solid;
+    border-color: LightSteelBlue;
+    border-width: 0px;
+    font-size: small;
+}
+
+header {
+    border-width: 0px 0px 1px 0px;
+    margin-bottom: 1em;
+}
+
+footer {
+    border-width: 1px 0px 0px 0px;
+    margin-top: 0.5em;
+    height: 1.5em;
+    height: 1em;
+}
+
+footer ul {
+    list-style-type: none;
+    display: block;
+    text-align: right;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+footer ul li {
+    display: inline;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+footer ul li:after {
+    content: " | ";
+}
+
+footer ul li:last-child:after {
+    content: none;
+}
+
+#newReleaseItem {
+    display: none;
+}
+
+#newReleaseItem a, #newReleaseItem a:visited {
+    color: DarkRed;
+}

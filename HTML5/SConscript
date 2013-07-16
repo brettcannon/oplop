@@ -1,0 +1,3 @@
+Import('env', 'RenderTemplate')
+
+RenderTemplate('debugging.html', 'index.html')

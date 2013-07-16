@@ -1,0 +1,57 @@
+=======
+Details
+=======
+The font is Droid Sans Mono
+(http://code.google.com/webfonts/family?family=Droid+Sans+Mono and is under an
+Apache License).
+
+=====
+Sizes
+=====
+16x16
+    + http://code.google.com/chrome/extensions/trunk/manifest.html#icons
+
+    * Chrome options page favicon (32x32 might also work)
+
+
+19x19
+    + http://code.google.com/chrome/extensions/trunk/browserAction.html#icon
+
+    * Chrome page action icon
+
+
+32x32
+    + http://code.google.com/chrome/extensions/trunk/manifest.html#icons
+
+    * Chrome gallery logo
+    * Favicon
+
+
+48x48
+    + http://code.google.com/chrome/extensions/trunk/manifest.html#icons
+
+    * Chrome extensions management page
+    * Small WebOS Application Icon (I don't know where this is defined other than in the app submission page)
+
+
+57x57
+    + http://developer.apple.com/safari/library/documentation/InternetWeb/Conceptual/iPhoneWebAppHIG/MetricsLayout/MetricsLayout.html#//apple_ref/doc/uid/TP40007900-CH6-SW31
+
+    * Apple iPhone Web Clip icon
+
+
+64x64
+    + http://developer.palm.com/index.php?option=com_content&view=article&id=1754&Itemid=29#UserInterfaceSummary-DisplayDimensions
+
+    * WebOS Application Icon
+
+
+128x128 (96x96 + 16px transparent border)
+    + http://code.google.com/chrome/webstore/docs/images.html
+    + https://adcweb.apple.com/iphone/icons.php
+
+    * Chrome extension installation
+    * Chrome installable web app launcher icon
+    * Chrome web app gallery
+    * Apple web application logo
+    * Google Code project logo

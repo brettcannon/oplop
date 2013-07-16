@@ -1,0 +1,43 @@
+import os.path
+
+
+if ARGUMENTS.get('DEPLOY') == 'ChromeWebApp':
+    Import('env', 'ZipFiles')
+    ZipFiles('oplop.zip',
+                'manifest.json', '*.html', 'icons/*.png', 'css/*.css',
+                '*.js')
+    RELEASE = True
+else:
+    RELEASE = False
+
+
+Import('env', 'RenderTemplate')
+Import('env', 'CLOSURE_COMPILER')
+
+
+RenderTemplate('webapp.html',
+                ['templates/webapp.html', '#/HTML5/index.html'],
+                RELEASE=RELEASE)
+
+
+if not os.path.exists(str(CLOSURE_COMPILER)):
+    print('Closure Compiler required to deploy the Chrome web app')
+else:
+    # Must list copied files specifically so they are depended upon.
+    Command('biggie.js',
+            ['js/oplop.js', 'js/md5.js', 'js/ui.js'] + Glob('js/*.js'),
+        './Chrome/webapp/closure-library/closure/bin/build/closurebuilder.py '
+        # Where to look for JS code.
+        '--root Chrome/webapp/closure-library --root Chrome/webapp/js '
+        # What namespaces to use to decide what to include.
+        '--namespace="oplop.ui.webapp" '
+        # Compile the JS code.
+        '--output_mode compiled '
+        # Where the compiler is.
+        '--compiler_jar={compiler} '
+        # Print out all warnings for debugging purposes.
+        '--compiler_flags="--warning_level=VERBOSE" > '
+        '$TARGET'.format(compiler=str(CLOSURE_COMPILER)))
+
+
+SConscript(['/'.join([name, 'SConscript']) for name in ('icons', 'css', 'js')])

@@ -1,0 +1,12 @@
+# A digit should exist in both the short and full password.
+0 : 1 : 09lEaAKk : 09lEaAKkQll1XTjm0WPoIA==
+# The short password has no digits, but the full password has several digits.
+0 : 9 : 56hhOYXs : hhOYXsSeuPdXrmQ56Hm7Kg==
+# The short password lacks digits, but the full password has a digit other than one.
+0 : 7 : 9fLvECey : fLvECeyZDxnHjHW9HgbyFQ==
+# The full password has no digits.
+0 : 0 : 1tLFHvFI : tLFHvFIoKHMfGgFr-nLAcw==
+# Unicode.
+ü : 0 : 7fHFfKQl : fHFfKQlvumngcWEWq7HCgg==
+# Mixed case and length > 1.
+Aa : Bb : pb3iGMs2 : pb3iGMs2S-VgWAX1kElklg==

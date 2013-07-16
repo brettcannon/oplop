@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Options for Oplop</title>
+
+        <!-- Closure CSS code is manually specified in build rules -->
+        <link rel=stylesheet href="closure-library/closure/goog/css/dialog.css">
+        <link rel=stylesheet href="closure-library/closure/goog/css/tab.css">
+        <link rel=stylesheet href="closure-library/closure/goog/css/tabbar.css">
+        <link rel=stylesheet href="css/options.css">
+
+        {% if RELEASE %}
+            <script src="biggie.js"></script>
+        {% else %}
+            <script src="closure-library/closure/goog/base.js"></script>
+            <script src="js/deps.js"></script>
+            <script src="js/nicknames.js"></script>
+            <script src="js/options.js"></script>
+        {% endif %}
+    </head>
+    <body onload="oplop.options.onLoad()">
+        <div id="tab_bar" class="goog-tab-bar goog-tab-bar-top">
+            <div id="tab1" class="goog-tab goog-tab-selected">Manage/save nicknames</div>
+            <div id="tab2" class="goog-tab">Reset nicknames</div>
+        </div>
+        <div class="goog-tab-bar-clear"></div>
+        <div class="goog-tab-content">
+
+            <!-- Manage/save nicknames -->
+            <div id="tab1_content">
+                <h3>Manage</h3>
+                <p class="note">Drag a nickname to the trash can to delete it.</p>
+
+                <p><a href="#" id="newNicknamePrompt">Add a nickname</a></p>
+
+                <p>
+                    <ul id="nicknames">
+                    </ul>
+                </p>
+
+                <p id="trashcanContainer">
+                    <span id="trashcan" title="Drag nicknames here to delete them">
+                        <img src="icons/trashcan.png">
+                    </span>
+                </p>
+
+                <h3>Save</h3>
+                <p class="note">Drag the icon below to your desktop to save your nicknames as a file.</p>
+
+                <p>
+                    <img id="nicknamesSaveDrag" src="icons/document.png"
+                         alt="Drag to your desktop to save your nicknames">
+                </p>
+
+            </div>
+
+            <!-- Reset nicknames -->
+            <div id="tab2_content" style="display: none;">
+                <p><a href="#" id="eraseNicknames">Erase nicknames</a></p>
+                <p>
+                    <input type=file id="nicknamesLoadDrop"title="You may also drag a file here to load it"></p>
+
+                    <p class="note">You may also drop a file on to the
+                        "Choose File" button to load it.</p>
+             </div>
+         </div>
+    </body>
+</html>

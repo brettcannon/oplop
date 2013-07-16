@@ -1,0 +1,45 @@
+/**
+    HVGA (320x480) stylesheet.
+
+    All rules are protected by media queries so as to only go into affect when
+    the viewport reaches HVGA resolution in either dimension. Styles should
+    work such that the website fits on a single screen on an HTC ADP1 (314x393
+    portrait, 476x235 landscape viewport).
+*/
+
+@media all and (max-width: 320px) {
+    .widthToSpare {
+        display: none;
+    }
+
+    section > h2 {
+        text-transform: capitalize;
+    }
+
+    input[type=text], input[type=password] {
+        width: 12em;
+    }
+
+    p, .note {
+        margin: 8px;
+    }
+}
+
+@media all and (max-height: 320px) {
+    .heightToSpare {
+        display: none;
+    }
+
+    section > h2 {
+        font-size: 1em;
+        padding: 2px;
+    }
+
+    .note {
+        display: none;
+    }
+
+    p {
+        margin: 5px;
+    }
+}

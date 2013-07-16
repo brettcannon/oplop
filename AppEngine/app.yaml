@@ -1,0 +1,51 @@
+application: oplop-hrd
+version: 9
+runtime: python27
+api_version: 1
+threadsafe: true
+
+skip_files:
+- ^(.*/)?app.yaml$
+- ^(.*/)?\..+
+- ^(.*/)?.+\.sublime-.+
+- ^(.*/)?.+\.py.*
+- ^(.*/)?.+\.log$
+- ^(.*/)?build.ninja$
+- ^(.*/)?selenium/.+
+
+handlers:
+# Just so there can be clean logs.
+- url: /favicon.ico
+  static_files: icons/icon016.png
+  upload: icons/icon016.png
+  secure: always
+
+- url: /cache.manifest
+  mime_type: text/cache-manifest
+  static_files: cache.manifest
+  upload: cache.manifest
+  secure: always
+
+- url: /
+  static_files: index.html
+  upload: index.html
+  secure: always
+
+# In case someone tries to visit the page explicitly;
+# also makes cache manifest file generation simpler.
+- url: /index.html
+  static_files: index.html
+  upload: index.html
+  secure: always
+
+- url: /icons
+  static_dir: icons
+  secure: always
+
+- url: /jquery.mobile
+  static_dir: jquery.mobile
+  secure: always
+
+- url: /oplop
+  static_dir: oplop
+  secure: always

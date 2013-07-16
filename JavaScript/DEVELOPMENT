@@ -1,0 +1,12 @@
+Testing
+-------
+
+Open ``test/index.html`` in a browser.
+
+
+Linting
+-------
+
+Use the `Closure Linter`_.
+
+.. _Closure Linter: http://code.google.com/closure/utilities/

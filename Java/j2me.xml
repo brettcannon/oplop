@@ -1,0 +1,126 @@
+<project name="oplop" default="dist" basedir=".">
+    <!--
+    build.properties is imported first so that all local configuration
+    can be done in that file.
+     -->
+    <property file="build.properties"/>
+    <property file="manifest.properties"/>
+    <property name="midp" value="/Users/ajani/Code/midp"/>
+    <property name="emulator" value="${midp}/bin/midp"/>
+    <property name="midp_lib" value="${midp}/classes"/>
+    <property name="preverifier" value="${midp}/bin/preverify"/>
+
+    <property name="jax" value="/lang/jax61"/>
+    <property name="junit" value="test/lib/junit-4.4.jar"/>
+    <property name="outdir" value="build/j2me-out"/>
+   
+
+    <target name="init">
+        <tstamp/>
+    </target>
+    
+    <target name="compile" depends="init">
+        <mkdir dir="${outdir}/classes"/>
+        <javac destdir="${outdir}/classes" srcdir="src" excludes="com/pyen/oplop/android/**"
+               bootclasspath="${midp_lib}" target="1.1" source="1.2"/>
+    </target>
+    
+    <target name="obfuscate" depends="compile">
+        <mkdir dir="${outdir}/jax"/>
+        
+        <java fork="yes" classname="com.ibm.jax.Batch"
+                classpath="${jax};${midp_lib}">
+            <sysproperty key="HOME" value=".."/>
+            <sysproperty key="MIDP_HOME" value="${midp}"/>
+            <arg line="${outdir}/oplop.jax"/>
+        </java>
+        
+        <mkdir dir="${outdir}/obfuscated"/>
+        <unjar src="${outdir}/jax/oplop_jax.zip"
+                dest="${outdir}/obfuscated"/>
+     </target>
+
+    <!-- Change the depend here to "compile" if you don't 
+    wish to use an obfuscator -->
+    <target name="preverify" depends="compile">
+        <mkdir dir="${outdir}/preverified"/>
+        <exec executable="${preverifier}">
+            <arg line="-classpath ${midp_lib}"/>
+            <arg line="-d ${outdir}/preverified"/>
+            <arg line="${outdir}/classes"/>
+        </exec>
+    </target>
+
+    <target name="manifest">
+        <mkdir dir="${outdir}"/>
+        <manifest file="${outdir}/MANIFEST.MF">
+            <attribute name="MIDlet-1" value="${name}, ${icon}, ${main_class}"/>
+            <attribute name="MIDlet-Name" value="${name}"/>
+            <attribute name="MIDlet-Version" value="${version}"/>
+            <attribute name="MIDlet-Vendor" value="${vendor}"/>
+            <attribute name="MIDlet-Icon" value="${icon}"/>
+            <attribute name="MIDlet-Info-URL" value="${info_url}"/>
+            <attribute name="MIDlet-Jar-URL" value="${jar_url}"/>
+            <attribute name="MIDlet-Description" value="${description}"/>
+            <attribute name="MicroEdition-Configuration" value="CLDC-1.0"/>
+            <attribute name="MicroEdition-Profile" value="MIDP-1.0"/>
+        </manifest>
+    </target>
+
+    <target name="dist" depends="preverify,manifest">
+        <mkdir dir="${outdir}/bin"/>
+        <jar basedir="${outdir}/preverified"
+                jarfile="${outdir}/bin/oplop.jar"
+                manifest="${outdir}/MANIFEST.MF">
+            <fileset dir="j2me-res"/>
+        </jar>
+        <exec executable="python">
+            <arg line="util/generate_jad.py"/>
+            <arg line="${outdir}/bin/oplop.jad"/>
+            <arg line="${outdir}/MANIFEST.MF"/>
+            <arg line="${outdir}/bin/oplop.jar"/>
+        </exec>
+    </target>
+
+    <target name="run" depends="dist">
+        <exec executable="${emulator}">
+            <arg line="-Xdescriptor ${outdir}/bin/oplop.jad"/>
+            <arg line="-classpath ${outdir}/bin/oplop.jar"/>
+            <env key="DISPLAY" value=":0.0"/> 
+        </exec>
+    </target>
+
+    <target name="onebit" depends="dist">
+        <exec executable="${midp}/bin/midp">
+            <arg line="-Dsystem.display.screen_depth=2"/>
+            <arg line="-Xdescriptor ${outdir}/bin/oplop.jad"/>
+            <arg line="-classpath ${outdir}/bin/oplop.jar"/>
+            <env key="DISPLAY" value=":0.0"/> 
+        </exec>
+    </target>
+
+    <target name="compile-tests" depends="dist">
+        <mkdir dir="${outdir}/test/classes" />
+        <javac debug="true" destdir="${outdir}/test/classes" srcdir="test/src"
+            classpath="${midp_lib}:${outdir}/bin/oplop.jar:${junit}" />
+    </target>
+
+    <target name="run-tests" depends="compile-tests">
+        <mkdir dir="${outdir}/test/reports" />
+        <junit haltonfailure="false" printsummary="yes" showoutput="on">
+            <sysproperty key="oplop.testData" value="../test_data.txt" />
+            <classpath path="${midp_lib}:${outdir}/bin/oplop.jar:${outdir}/test/classes:${junit}" />
+            <batchtest todir="${outdir}/test/reports">
+                <fileset dir="test/src">
+                    <include name="**/*Test.java"/>
+                </fileset>
+                <formatter type="plain"/>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="clean">
+        <delete dir="${outdir}" />
+    </target>
+
+</project>

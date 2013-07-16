@@ -1,0 +1,9 @@
+import os.path
+
+Import('env', 'CopyFile')
+
+
+CopyFile(None, '#/Chrome/ui.js')
+
+for file_name in ('md5.js', 'oplop.js'):
+    CopyFile(None, os.path.join('#/JavaScript', file_name))

@@ -1,0 +1,41 @@
+/* TODO: put your application-specific CSS here */
+#addedToClipboard { color: green; text-align: center; margin-bottom:10px; }
+.centeredText { text-align: center; }
+.help { text-align: center; }
+
+#oldInterfaceText {
+    display: inline;
+    padding-right: 0px;
+}
+#oldInterfaceToggle {
+    display: inline;
+}
+#restartText {
+    text-align: center;
+}
+.padding {
+    margin-top: 50px;
+}
+.swipe {
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+}
+.welcome {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1em;
+}
+div#explanation p {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 1em;
+}
+
+div#firstRun p {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 1em;
+}

@@ -1,0 +1,19 @@
+{
+    "id": "com.googlecode.oplop",
+    "version": "1.0.2",
+    "vendor": "Oplop",
+    "vendorurl": "http://oplop.googlecode.com/",
+    "type": "web",
+    "main": "index.html",
+    "title": "oplop",
+    "icon": "icon.png",
+    "smallicon": "smallicon.png",
+    "copyright": "Copyright 2011 Bem Jones-Bey, Brett Cannon",
+    "support": {
+        "url": "http://code.google.com/p/oplop/wiki/TableOfContents",
+        "email": {
+            "address": "oplop@pyen.com",
+            "subject": "Oplop Support"
+        }
+    }
+}

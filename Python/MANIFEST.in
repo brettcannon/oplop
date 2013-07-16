@@ -1,0 +1,6 @@
+include README
+include LICENSE
+include __main__.py
+include setup.py
+recursive-include oplop *.py
+recursive-include bin *

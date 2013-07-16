@@ -1,0 +1,8 @@
+import os.path
+
+Import('env', 'CopyFile')
+
+
+checkout_path = File('#/closure-compiler/contrib/externs/chrome_extensions.js')
+if os.path.exists(str(checkout_path)):
+    CopyFile(None, str(checkout_path))

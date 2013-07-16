@@ -1,0 +1,56 @@
+oplop for J2ME
+--------------
+
+To build, you will need a MIDP implementation that supports CLDC 1.1 and MIDP
+2.1.
+
+    - For Windows and Linux, use Sun's latest Reference Implementation:
+        http://java.sun.com/products/sjwtoolkit/
+
+    - On Mac OS X, you can use this implementation:
+        http://mpowerplayer.com/download.jsp
+
+Take a look at example_build.properties, as you will at least have to create a
+build.properties to set the midp property to the path into which you have
+installed your MIDP implementation.
+
+If you're using the Sun implementation, then you'll need to set the midp
+property to where you installed the wireless toolkit, and you'll need to set
+the midp_lib property to "${midp}/lib/cldcapi11.jar:${midp}/lib/midpapi21.jar".
+
+oplop for Android
+--------------
+
+To start, you will need the android SDK:
+
+  http://code.google.com/android/
+
+Take a look at example_build.properties, as you will at least have to create a
+build.properties to set the android_sdk property to the path into which you have
+installed your android SDK.
+
+To build, you can run the following commands:
+
+for debug (default target):
+  ant -f android.xml
+
+for release:
+  ant -f android.xml release
+
+To test, you need to start the emulator first.
+  ant -f android start-emulator
+
+NOTE: if you want to try this on your phone, you need to go to Settings -> Applications -> Development and enable USB debugging.  After that, just plugin your phone with the usb cable and run the same Ant commands and it will skip the emulator and install to the phone.
+
+to test debug build:
+  ant -f android.xml install-dbg
+or you can do
+  ant -f android.xml reinstall-dbg
+
+to test release build (Note this doesn't work until you sign the jar):
+  ant -f android.xml install
+or you can do
+  ant -f android.xml reinstall
+
+to uninstall:
+  ant -f android.xml uninstall

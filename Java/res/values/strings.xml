@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Oplop</string>
+    <string name="text_label">Label</string>
+    <string name="text_master">Master Password</string>
+    <string name="text_generate">Password:</string>
+    <string name="button_clearfield">Clear Fields</string>
+    <string name="menu_send">Send over email</string>
+    <string name="menu_copy">Copy password</string>
+    <string name="button_generate">Generate Password</string>
+    <string name="button_ok">OK</string>
+</resources>

@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block css_paths %}
+    <link rel=stylesheet href="css/index.css">
+    <link rel=stylesheet href="css/extension.css">
+    <!-- Closure CSS files are manually specified in build rules. -->
+    <link rel=stylesheet
+        href="closure-library/closure/goog/css/autocomplete.css">
+{% endblock %}
+
+{% block js_paths %}
+    {% if RELEASE %}
+        <script src="biggie.js"></script>
+    {% else %}
+        <script src="closure-library/closure/goog/base.js"></script>
+        <script src="js/deps.js"></script>
+        <script src="js/md5.js"></script>
+        <script src="js/oplop.js"></script>
+        <script src="js/nicknames.js"></script>
+        <script src="js/ui.js"></script>
+        <script src="js/extension.js"></script>
+    {% endif %}
+{% endblock %}
+
+{% block onload %}oplop.ui.extension.onLoad(){% endblock %}
+
+{% block header %}
+    <header>
+    <p style="text-align: right;">
+        <a href="https://chrome.google.com/extensions/detail/bjgihiafnlohlfegcngpknnjidiikblj?hl=en-US">
+            Web App Available!
+        </a>
+    </p>
+    </header>
+{% endblock %}
+
+{% block newNicknameQuestion %}{% endblock %}
+
+{% block footer %}
+<footer>
+    <ul>
+        <li id="newReleaseItem"><a target="_blank">New Release</a></li>
+        <li><a id="optionsLink" target="_blank">Options</a></li>
+    </ul>
+</footer>
+{% endblock %}

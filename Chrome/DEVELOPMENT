@@ -1,0 +1,35 @@
+Dependency checking
+===================
+
+If the dependencies of any files change for either the web app or extension,
+run::
+
+  ./closure-library/closure/bin/build/depswriter.py --root_with_prefix="js ../../../js" > js/deps.js
+
+
+Linting
+=======
+
+The `Closure Linter`_ can be used for linting JS code to verify it follows
+proper form. Assuming the linter is installed, run::
+
+  gjslint -r js
+
+
+.. _Closure Linter: http://code.google.com/closure/utilities/
+
+
+Compilation Warnings
+====================
+
+Thanks to JSDoc markup, using the `Closure Compiler`_ will output warnings and
+errors about various issues it is able to check. To do this you need to have
+downloaded the Closure Compiler and placed it at
+``#/compiler.jar``.
+
+With the compiler in place, simply run ``scons`` and the compiler will be run
+with VERBOSE warnings to help detect errors.
+
+
+.. _Closure Compiler: http://code.google.com/closure/compiler/
+.._ externs file for Chrome extensions: http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/chrome_extensions.js

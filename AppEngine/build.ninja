@@ -1,0 +1,14 @@
+
+rule make_ninja
+  generator = make_ninja.py
+  command = python2.7 make_ninja.py
+
+build build.ninja: make_ninja | make_ninja.py app.yaml
+
+
+rule make_manifest
+  command = python2.7 make_manifest.py --output $out $in
+
+build cache.manifest: make_manifest icons/icon057.png jquery.mobile/jquery.mobile-1.3.1.min.css jquery.mobile/images/icons-18-white.png index.html jquery.mobile/images/icons-36-black.png jquery.mobile/images/icons-36-white.png jquery.mobile/images/ajax-loader.gif jquery.mobile/jquery.mobile.structure-1.3.1.min.css icons/icon016.png jquery.mobile/jquery-1.10.2.min.js icons/gplus-18.png jquery.mobile/jquery.mobile.theme-1.3.1.min.css oplop/md5.js icons/icon.svg icons/gplus-36.png jquery.mobile/images/icons-18-black.png oplop/oplop.js jquery.mobile/jquery.mobile-1.3.1.min.js | make_manifest.py app.yaml
+
+default cache.manifest

@@ -1,0 +1,4 @@
+Import('env', 'CopyFile')
+
+CopyFile(None, '#/HTML5/index.css')
+CopyFile(None, '#/HTML5/hvga.css')

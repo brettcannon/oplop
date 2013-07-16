@@ -1,0 +1,30 @@
+[
+    {"source": "app/assistants/stage-assistant.js"},
+    {"source": "app/util/md5.js"},
+    {"source": "app/util/oplop.js"},
+    {"source": "app/models/nickname-model.js"},
+    {
+        "scenes": "main",
+        "source": "app/assistants/main-assistant.js"
+    },
+    {
+        "scenes": "nicknamechooser",
+        "source": "app/assistants/nicknamechooser-assistant.js"
+    },
+    {
+        "scenes": "passwordentry",
+        "source": "app/assistants/passwordentry-assistant.js"
+    },
+    {
+        "scenes": "preferences",
+        "source": "app/assistants/preferences-assistant.js"
+    },
+    {
+        "scenes": "password",
+        "source": "app/assistants/password-assistant.js"
+    },
+    {
+        "scenes": "help",
+        "source": "app/assistants/help-assistant.js"
+    }
+]
