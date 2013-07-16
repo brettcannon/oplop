@@ -20,7 +20,7 @@ In those rare cases this is still not enough to appease the requirements for a p
 
 Thanks to all of this, the only thing you have to **really** keep secret is your master password. You can write your nicknames on a piece of paper you keep safely somewhere as long as you **never** tell anyone or write down your master password and make sure it is strong (i.e. complicated and could not be guessed by anyone who knows you).
 
-To learn how to use Oplop itself and more details, such as choosing nicknames and a master password, see the [best practices](https://github.com/brettcannon/oplop/wiki/Best-Practices) of Oplop's usage.
+To learn how to use Oplop itself and more details, such as choosing nicknames and a master password, read about [best practices](https://github.com/brettcannon/oplop/wiki/Best-Practices).
 
 ### Technical Details
 
@@ -43,4 +43,4 @@ You do not need to worry about the use of MD5 as the hashing algorithm as compar
 
 It must also be realized that Oplop is designed to run anywhere -- including in a web browsers on a mobile phone -- which restricts the number of rounds that can be used. While it would be technically safer to use several MD5 rounds (as [should be used on servers storing passwords](http://chargen.matasano.com/chargen/2007/9/7/enough-with-the-rainbow-tables-what-you-need-to-know-about-s.html)), Oplop does not have that luxury for performance reasons; a mobile phone cannot run MD5 thousands of times very quickly.
 
-You can read more about what Oplop does (not) protect against in its [Threat model](https://github.com/brettcannon/oplop/wiki/Threat-Model).
+You can read more about what Oplop does (not) protect against in its [threat model](https://github.com/brettcannon/oplop/wiki/Threat-Model).
