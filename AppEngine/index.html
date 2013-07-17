@@ -26,6 +26,7 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         /* Start with the validating master password field hidden */
         #validateMasterPassword {
             display: none;
@@ -34,6 +35,8 @@
         .ui-icon-gplus {
             background-image: url("icons/gplus-18.png");
         }
+
+        /* TODO: once Chrome 28 is stable, remove -webkit line. */
         @media
         only screen and (min-resolution: 2dppx),
         only screen and (-webkit-min-device-pixel-ratio: 2) {
@@ -41,6 +44,12 @@
                 background-image: url("icons/gplus-36.png");
                 background-size: 18px 18px;
             }
+        }
+
+        /* Use IDs over 'input' selector to override jQuery Mobile theming. */
+        #nickname, #masterPassword, #validateMasterPassword, #accountPassword {
+            inherit: none;
+            font-family: monospace;
         }
     </style>
 </head>
