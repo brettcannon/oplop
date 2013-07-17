@@ -31,7 +31,7 @@ else:
     Command('biggie.js',
             ['externs/chrome_extensions.js',
                 'js/oplop.js', 'js/md5.js', 'js/ui.js'] + Glob('js/*.js'),
-        './Chrome/extension/closure-library/closure/bin/build/closurebuilder.py '
+        'python ./Chrome/extension/closure-library/closure/bin/build/closurebuilder.py '
         # Where to look for JS code.
         '--root Chrome/extension/closure-library --root Chrome/extension/js '
         # What namespaces to use to decide what to include.

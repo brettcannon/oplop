@@ -108,6 +108,7 @@ oplop.options.onLoad = function() {
                                             oplop.options.loadNicknamesFile_);
 };
 
+window.onload = oplop.options.onLoad;
 goog.exportSymbol('oplop.options.onLoad', oplop.options.onLoad);
 
 

@@ -2,7 +2,7 @@ goog.provide('oplop.ui.extension');
 
 goog.require('goog.dom');
 goog.require('goog.events');
-goog.require('goog.ui.AutoComplete.Basic');
+goog.require('goog.ui.ac');
 goog.require('oplop.nicknames');
 goog.require('oplop.ui');
 
@@ -39,7 +39,7 @@ oplop.ui.extension.onLoad = function() {
         nicknameArray.push(nickname);
     }
 
-    oplop.ui.extension.AUTO_COMPLETE_ = new goog.ui.AutoComplete.Basic(
+    oplop.ui.extension.AUTO_COMPLETE_ = new goog.ui.ac.createSimpleAutoComplete(
                                             nicknameArray,
                                             goog.dom.getElement('nickname'),
                                             false, false);
@@ -93,6 +93,7 @@ oplop.ui.extension.onLoad = function() {
     oplop.ui.onLoad();
 };
 
+window.onload = oplop.ui.extension.onLoad;
 goog.exportSymbol('oplop.ui.extension.onLoad', oplop.ui.extension.onLoad);
 
 /**
