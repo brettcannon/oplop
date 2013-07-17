@@ -6,25 +6,17 @@ infinite number of unique account passwords. These unique account passwords are
 commonly called password hashes, domain-specific passwords, or per-site
 passwords.
 
+For usage, run ``python -m oplop -h``.
+
 The CLI implementation of Oplop is only one of many implementations. See the
-`project home page <http://code.google.com/p/oplop/>`__ for the complete list
+`project home page <https://github.com/brettcannon/oplop>`__ for the complete list
 of available implementations of Oplop.
 
 
 General
 -------
 
-Project home page: http://code.google.com/p/oplop/
-
-What Oplop is: http://code.google.com/p/oplop/wiki/HowItWorks
-
-
-CLI-specific
-------------
-
-Release Notes: http://code.google.com/p/oplop/wiki/CLIReleaseNotes
-
-Instructions: http://code.google.com/p/oplop/wiki/CLIInstructions
+Project home page: https://github.com/brettcannon/oplop
 
 
 Testing
