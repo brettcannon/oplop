@@ -7,7 +7,7 @@ Generate account passwords based on a nickname and a master password.
 * [Web](https://oplop.appspot.com)
 * [Google Chome](https://chrome.google.com/webstore/detail/oplop/bjgihiafnlohlfegcngpknnjidiikblj)
 * Emacs
-* SL4A
+* [SL4A](https://raw.github.com/brettcannon/oplop/master/SL4A/qr_code.png)
 * [Command-line](https://pypi.python.org/pypi/Oplop)
 * J2ME
 * [webOS](http://developer.palm.com/webChannel/index.php?packageid=com.googlecode.oplop)
