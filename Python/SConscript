@@ -1,3 +1,0 @@
-Import('env', 'CopyFile')
-
-CopyFile(None, '#/LICENSE')
