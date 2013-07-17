@@ -1,3 +1,4 @@
+.ninja_*
 .sconsign*
 *.pyc
 *.pyo
