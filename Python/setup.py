@@ -17,7 +17,7 @@ with open('README', 'r') as file:
 
 
 setup(name="Oplop",
-        version='1.6',
+        version='1.6.1',
         description="Generate account passwords based on account nicknames and "
                     "a master password.",
         long_description=long_description,
