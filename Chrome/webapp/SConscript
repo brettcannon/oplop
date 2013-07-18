@@ -26,7 +26,7 @@ else:
     # Must list copied files specifically so they are depended upon.
     Command('biggie.js',
             ['js/oplop.js', 'js/md5.js', 'js/ui.js'] + Glob('js/*.js'),
-        './Chrome/webapp/closure-library/closure/bin/build/closurebuilder.py '
+        'python ./Chrome/webapp/closure-library/closure/bin/build/closurebuilder.py '
         # Where to look for JS code.
         '--root Chrome/webapp/closure-library --root Chrome/webapp/js '
         # What namespaces to use to decide what to include.

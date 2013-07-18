@@ -17,6 +17,7 @@ oplop.ui.webapp.onLoad = function() {
     oplop.ui.onLoad();
 };
 
+window.onload = oplop.ui.webapp.onLoad;
 goog.exportSymbol('oplop.ui.webapp.onLoad', oplop.ui.webapp.onLoad);
 
 
