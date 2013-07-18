@@ -5,9 +5,13 @@ import hashlib
 
 
 manifest_template="""CACHE MANIFEST
-# Creeated on {timestamp}
+# Created on {timestamp}
 # MD5 hash of files in hexidecimal: {md5_hash}
+CACHE:
 {filepaths}
+
+NETWORK:
+*
 """
 
 # UTC implementation snagged from datetime docs.
