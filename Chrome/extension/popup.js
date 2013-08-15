@@ -1,1 +1,0 @@
-oplop.ui.extension.onLoad();
