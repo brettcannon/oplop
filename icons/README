@@ -1,37 +1,17 @@
 =======
 Details
 =======
-The font is Droid Sans Mono
-(http://code.google.com/webfonts/family?family=Droid+Sans+Mono and is under an
-Apache License).
+The font is Source Sans Pro.
 
 =====
 Sizes
 =====
-16x16
-    + http://code.google.com/chrome/extensions/trunk/manifest.html#icons
-
-    * Chrome options page favicon (32x32 might also work)
-
-
-19x19
-    + http://code.google.com/chrome/extensions/trunk/browserAction.html#icon
-
-    * Chrome page action icon
-
-
-32x32
-    + http://code.google.com/chrome/extensions/trunk/manifest.html#icons
-
-    * Chrome gallery logo
-    * Favicon
-
 
 48x48
     + http://code.google.com/chrome/extensions/trunk/manifest.html#icons
 
-    * Chrome extensions management page
-    * Small WebOS Application Icon (I don't know where this is defined other than in the app submission page)
+    * Small WebOS Application Icon (I don't know where this is defined other
+      than in the app submission page)
 
 
 57x57
@@ -47,11 +27,7 @@ Sizes
 
 
 128x128 (96x96 + 16px transparent border)
-    + http://code.google.com/chrome/webstore/docs/images.html
+    + https://developers.google.com/chrome/web-store/docs/images
     + https://adcweb.apple.com/iphone/icons.php
 
-    * Chrome extension installation
-    * Chrome installable web app launcher icon
-    * Chrome web app gallery
-    * Apple web application logo
-    * Google Code project logo
+    * Chrome Web Store
