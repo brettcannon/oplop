@@ -9,16 +9,11 @@
         <link rel=stylesheet href="closure-library/closure/goog/css/tabbar.css">
         <link rel=stylesheet href="css/options.css">
 
-        {% if RELEASE %}
+        
             <script src="biggie.js"></script>
-        {% else %}
-            <script src="closure-library/closure/goog/base.js"></script>
-            <script src="js/deps.js"></script>
-            <script src="js/nicknames.js"></script>
-            <script src="js/options.js"></script>
-        {% endif %}
+        
     </head>
-    <body>
+    <body onload="oplop.options.onLoad()">
         <div id="tab_bar" class="goog-tab-bar goog-tab-bar-top">
             <div id="tab1" class="goog-tab goog-tab-selected">Manage/save nicknames</div>
             <div id="tab2" class="goog-tab">Reset nicknames</div>

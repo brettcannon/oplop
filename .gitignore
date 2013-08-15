@@ -24,18 +24,6 @@ AppEngine/static/index.css
 AppEngine/static/hvga.css
 AppEngine/templates/index.html
 
-Chrome/extension/biggie.js
-Chrome/extension/oplop.zip
-Chrome/extension/options.html
-Chrome/extension/popup.html
-Chrome/extension/js/md5.js
-Chrome/extension/js/oplop.js
-Chrome/extension/js/ui.js
-Chrome/extension/icons/icon*.png
-Chrome/extension/css/index.css
-Chrome/extension/css/hvga.css
-Chrome/extension/closure-library
-
 Chrome/webapp/oplop.zip
 Chrome/webapp/biggie.js
 Chrome/webapp/webapp.html

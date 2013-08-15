@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>Oplop</title>
+        <meta charset="UTF-8">
+
+
+
+
+
+    <link rel=stylesheet href="css/index.css">
+    <link rel=stylesheet href="css/extension.css">
+    <!-- Closure CSS files are manually specified in build rules. -->
+    <link rel=stylesheet
+        href="closure-library/closure/goog/css/autocomplete.css">
+
+
+
+
+        <script src="biggie.js"></script>
+
+
+    </head>
+    <body>
+        <noscript>Oplop requires JavaScript</noscript>
+
+
+    <header>
+    <p style="text-align: right;">
+        <a href="XXX">
+            This extension is <blink style='color:red;'>DEPRECATED!</blink>
+        </a>
+    </p>
+    </header>
+
+
+        <section id="nicknameSection">
+            <h2>
+                <label for="nickname">
+                    <span class="widthToSpare">Account</span> nickname
+                </label>
+            </h2>
+
+            <p><input id="nickname" type=text required
+                placeholder="Nickname goes here" autofocus></p>
+            <p class="note">
+                <a href="http://code.google.com/p/oplop/wiki/HowItWorks"
+                    target="_blank">E.g.</a>,
+                <span style="font-style: italic;">
+                    Amazon, AMZN, or bookstore</span>
+            </p>
+            <!-- <datalist id=nicknameList>
+            </datalist> -->
+        </section>
+
+        <section id="masterPasswordSection">
+            <h2>
+                <label for="masterPassword">
+                    <span class="widthToSpare">Your</span>
+                    master password
+                </label>
+            </h2>
+
+            <p><input id="masterPassword" type=password required
+                placeholder="Master password goes here"></p>
+            <p>
+
+            <input id="validateMasterPassword" type=password
+                placeholder="Master password (again)"></p>
+        </section>
+
+        <section id="accountPasswordSection">
+            <h2>
+                <span class="widthToSpare">Your <i>unique</i></span>
+                account password
+            </h2>
+
+            <p><input id="createAccountPassword" value="Create" type=button></p>
+
+
+
+        </section>
+
+
+<footer>
+    <ul>
+        <li id="newReleaseItem"><a target="_blank">New Release</a></li>
+        <li><a id="optionsLink" target="_blank">Options</a></li>
+    </ul>
+</footer>
+
+<script src="popup.js"></script>
+
+    </body>
+</html>

@@ -1,6 +1,6 @@
 {
     "name": "Oplop",
-    "version": "2010.12.7.3",
+    "version": "2013.8.15",
     "manifest_version": 2,
     "description": "An extension that creates account passwords from nicknames and a master password.",
 
@@ -12,6 +12,7 @@
     },
 
 
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "permissions": ["tabs"],
 
     "options_page": "options.html",

@@ -1,0 +1,26 @@
+#validateMasterPassword {
+    display: none;
+}
+
+.note {
+    font-size: x-small;
+    color: gray;
+    margin-top: -1em;  /* Be close to the <input> fields. */
+}
+
+label[for='isNewNickname'] {
+    font-size: 0.8em;
+}
+
+input[type=text], input[type=password] {
+    width: 18em;
+}
+
+section > h2 {
+    font-size: 1.2em;
+    border: 1px solid black;
+    background-color: PaleGreen;
+    padding: 3px;  /* Cushion for readability. */
+    margin: 1px;  /* Don't waste vertical space between steps. */
+}
+
