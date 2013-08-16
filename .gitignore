@@ -14,16 +14,7 @@ closure-compiler
 compiler.jar
 closure-linter
 
-AppEngine/DEPLOYED
 AppEngine/cache.manifest
-AppEngine/tests/Oplop\ Tests/bin
-AppEngine/static/icon*.png
-AppEngine/static/biggie.js
-AppEngine/static/md5.js
-AppEngine/static/oplop.js
-AppEngine/static/index.css
-AppEngine/static/hvga.css
-AppEngine/templates/index.html
 
 Chrome/webapp/oplop.zip
 Chrome/webapp/biggie.js
