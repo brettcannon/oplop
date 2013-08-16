@@ -8,6 +8,7 @@ Python/dist
 *.class
 *.idea
 *.iml
+.DS_Store
 
 closure-compiler
 compiler.jar
