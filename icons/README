@@ -3,31 +3,39 @@ Details
 =======
 The font is Source Sans Pro.
 
+Padding is 25% of the total dimension (e.g. 32px for a 128x128 icon).
+It should be left off (along with the icon border) when transparency is not
+supported.
+
+
 =====
 Sizes
 =====
+Web
+---
+- 16x16: Favicon
+- 32x32:
+- 64x64:
+- 128x128:
 
-48x48
-    + http://code.google.com/chrome/extensions/trunk/manifest.html#icons
 
-    * Small WebOS Application Icon (I don't know where this is defined other
+Chrome
+------
+- 128x128: Chrome Web Store; https://developers.google.com/chrome/web-store/docs/images
+
+
+iOS
+---
+Web Clip (NO transparency); https://developer.apple.com/library/safari/documentation/UserExperience/Conceptual/MobileHIG/IconsImages/IconsImages.html#//apple_ref/doc/uid/TP40006556-CH14
+- 57x57: iPhone
+- 72x72: iPad
+- 114x114: iPhone - retina
+- 144x144: iPad - retina
+
+
+WebOS
+-----
+- 48x48: Small Application Icon (don't know where this is defined other
       than in the app submission page)
 
-
-57x57
-    + http://developer.apple.com/safari/library/documentation/InternetWeb/Conceptual/iPhoneWebAppHIG/MetricsLayout/MetricsLayout.html#//apple_ref/doc/uid/TP40007900-CH6-SW31
-
-    * Apple iPhone Web Clip icon
-
-
-64x64
-    + http://developer.palm.com/index.php?option=com_content&view=article&id=1754&Itemid=29#UserInterfaceSummary-DisplayDimensions
-
-    * WebOS Application Icon
-
-
-128x128 (96x96 + 16px transparent border)
-    + https://developers.google.com/chrome/web-store/docs/images
-    + https://adcweb.apple.com/iphone/icons.php
-
-    * Chrome Web Store
+- 64x64: Application icon; http://developer.palm.com/index.php?option=com_content&view=article&id=1754&Itemid=29#UserInterfaceSummary-DisplayDimensions
