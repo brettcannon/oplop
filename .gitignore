@@ -14,7 +14,7 @@ closure-compiler
 compiler.jar
 closure-linter
 
-AppEngine/cache.manifest
+HTML/AppEngine/cache.manifest
 
 Chrome/webapp/oplop.zip
 Chrome/webapp/biggie.js
@@ -25,10 +25,6 @@ Chrome/webapp/icons/*.png
 Chrome/webapp/js/md5.js
 Chrome/webapp/js/oplop.js
 Chrome/webapp/js/ui.js
-
-HTML5/debugging.html
-
-JavaScript/test/testdata.js
 
 Python/.coverage
 Python/htmlcov
