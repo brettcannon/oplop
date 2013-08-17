@@ -37,6 +37,11 @@ handlers:
   upload: index.html
   secure: always
 
+- url: /assets/source_sans_pro-latin_ext.woff
+  static_files: assets/source_sans_pro-latin_ext.woff
+  upload: assets/source_sans_pro-latin_ext.woff
+  secure: always
+
 - url: /assets/icons
   static_dir: assets/icons
   secure: always
