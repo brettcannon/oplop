@@ -10,14 +10,13 @@ skip_files:
 - ^(.*/)?.+\.sublime-.+
 - ^(.*/)?.+\.py.*
 - ^(.*/)?.+\.log$
-- ^(.*/)?build.ninja$
-- ^(.*/)?selenium/.+
+- ^(.*/)?.+\.ninja$
 
 handlers:
 # Just so there can be clean logs.
 - url: /favicon.ico
-  static_files: icons/icon016.png
-  upload: icons/icon016.png
+  static_files: assets/icons/icon016.png
+  upload: assets/icons/icon016.png
   secure: always
 
 - url: /cache.manifest
@@ -38,14 +37,14 @@ handlers:
   upload: index.html
   secure: always
 
-- url: /icons
-  static_dir: icons
+- url: /assets/icons
+  static_dir: assets/icons
   secure: always
 
-- url: /jquery.mobile
-  static_dir: jquery.mobile
+- url: /assets/jquery.mobile
+  static_dir: assets/jquery.mobile
   secure: always
 
-- url: /oplop
-  static_dir: oplop
+- url: /assets/oplop
+  static_dir: assets/oplop
   secure: always

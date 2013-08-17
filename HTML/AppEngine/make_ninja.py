@@ -59,16 +59,19 @@ if __name__ == '__main__':
     skipped = set()
     served = set()
     cwd = os.getcwd()
-    for dirpath, dirnames, filenames in os.walk(cwd):
+    for dirpath, dirnames, filenames in os.walk(cwd, followlinks=True):
         for filename in filenames:
             filepath = os.path.join(dirpath, filename)[len(cwd)+len(os.sep):]
             if skip_re.match(filepath):
                 skipped.add(filepath)
+                print('Skipped', filepath)
             elif filepath in static_files or in_static_dir(filepath, static_dirs):
                 served.add(filepath)
+                print('Added', filepath)
             else:
                 raise RuntimeError('{!r} is not handled'.format(filepath))
 
+    print()
     print('Skipped:')
     for path in sorted(skipped):
         print('  ', path)
