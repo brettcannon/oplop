@@ -16,6 +16,10 @@ closure-linter
 
 HTML/AppEngine/build.ninja
 HTML/AppEngine/cache.manifest
+HTML/oplop-chrome_app.zip
+HTML/ChromeApp/build.ninja
+HTML/ChromeApp/index.html
+HTML/ChromeApp/assets
 
 Chrome/webapp/oplop.zip
 Chrome/webapp/biggie.js
