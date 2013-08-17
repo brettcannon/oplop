@@ -14,6 +14,7 @@ closure-compiler
 compiler.jar
 closure-linter
 
+HTML/AppEngine/build.ninja
 HTML/AppEngine/cache.manifest
 
 Chrome/webapp/oplop.zip
