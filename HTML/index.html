@@ -28,6 +28,8 @@
     <script src="assets/oplop/md5.js"></script>
     <script src="assets/oplop/oplop.js"></script>
 
+    <script src="assets/startup.js"></script>
+
     <style>
         /* http://www.google.com/fonts#UsePlace:use/Collection:Source+Sans+Pro */
         @font-face {
@@ -137,41 +139,5 @@
             </span>
         </footer>
     </div>
-
-    <script>
-        $(function() {
-            $.mobile.defaultPageTransition = 'none';
-
-            $('#newNickname').click(function() {
-                $('#newNicknameContainer').css('display', 'none');
-                $('#validateMasterPassword').css('display', 'inline').focus();
-            });
-
-            $('#createAccountPassword').click(function() {
-                if ($('#newNickname')[0].checked) {
-                    if ($('#masterPassword').val() !==
-                            $('#validateMasterPassword').val()) {
-                        $('#masterPassword').val('');
-                        $('#validateMasterPassword').val('');
-                        $('#masterPassword').focus();
-                        return;
-                    }
-                }
-
-                $.mobile.changePage('#accountPasswordPage',
-                                         {changeHash: false});
-
-                var accountPassword = oplop.accountPassword($('#nickname').val(),
-                                            $('#masterPassword').val());
-                $(':password, :text').val('');
-
-                $('#accountPassword').val(accountPassword).focus();
-            });
-
-            $('.startOver').click(function() {
-                window.location = window.location;
-            });
-        });
-    </script>
 </body>
 </html>
