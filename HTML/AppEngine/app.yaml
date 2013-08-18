@@ -42,6 +42,11 @@ handlers:
   upload: assets/source_sans_pro-latin_ext.woff
   secure: always
 
+- url: /assets/startup.js
+  static_files: assets/startup.js
+  upload: assets/startup.js
+  secure: always
+
 - url: /assets/icons
   static_dir: assets/icons
   secure: always
