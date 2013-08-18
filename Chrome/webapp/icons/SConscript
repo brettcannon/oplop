@@ -1,3 +1,0 @@
-Import('env', 'CopyIcons')
-
-CopyIcons(16, 48, 128)
