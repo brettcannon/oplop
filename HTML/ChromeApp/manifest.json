@@ -6,6 +6,7 @@
     "version": "2010.13.8.0",
 
     "icons": {
+        "16": "assets/icons/icon016.png",
         "128": "assets/icons/icon128.png"
     },
 
