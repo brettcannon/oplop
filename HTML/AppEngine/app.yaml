@@ -24,6 +24,8 @@ handlers:
   static_files: cache.manifest
   upload: cache.manifest
   secure: always
+  http_headers:
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 - url: /
   static_files: index.html
