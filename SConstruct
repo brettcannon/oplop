@@ -93,9 +93,6 @@ Export('env', 'CLOSURE_COMPILER')
 
 
 SConscript([os.path.join(directory, 'SConscript')
-            for directory in ('Chrome',
-                              'JavaScript',
-                              'HTML5',
-                              'Python',
+            for directory in ([
                               'SL4A',
                               )])
