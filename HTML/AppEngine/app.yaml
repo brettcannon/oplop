@@ -32,6 +32,7 @@ handlers:
   http_headers:
     Content-Security-Policy: script-src 'self'; object-src 'self'
     X-Frame-Options: deny
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 # In case someone tries to visit the page explicitly;
 # also makes cache manifest file generation simpler.
@@ -42,6 +43,7 @@ handlers:
   http_headers:
     Content-Security-Policy: script-src 'self'; object-src 'self'
     X-Frame-Options: deny
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 - url: /assets/source_sans_pro-latin_ext.woff
   static_files: assets/source_sans_pro-latin_ext.woff
