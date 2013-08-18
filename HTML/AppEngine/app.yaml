@@ -29,6 +29,8 @@ handlers:
   static_files: index.html
   upload: index.html
   secure: always
+  http_headers:
+    Content-Security-Policy: script-src 'self'; object-src 'self'
 
 # In case someone tries to visit the page explicitly;
 # also makes cache manifest file generation simpler.
@@ -36,6 +38,8 @@ handlers:
   static_files: index.html
   upload: index.html
   secure: always
+  http_headers:
+    Content-Security-Policy: script-src 'self'; object-src 'self'
 
 - url: /assets/source_sans_pro-latin_ext.woff
   static_files: assets/source_sans_pro-latin_ext.woff
