@@ -9,6 +9,7 @@ Python/dist
 *.idea
 *.iml
 .DS_Store
+*.swp
 
 closure-compiler
 compiler.jar
