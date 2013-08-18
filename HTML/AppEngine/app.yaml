@@ -10,14 +10,13 @@ skip_files:
 - ^(.*/)?.+\.sublime-.+
 - ^(.*/)?.+\.py.*
 - ^(.*/)?.+\.log$
-- ^(.*/)?build.ninja$
-- ^(.*/)?selenium/.+
+- ^(.*/)?.+\.ninja$
 
 handlers:
 # Just so there can be clean logs.
 - url: /favicon.ico
-  static_files: icons/icon016.png
-  upload: icons/icon016.png
+  static_files: assets/icons/icon016.png
+  upload: assets/icons/icon016.png
   secure: always
 
 - url: /cache.manifest
@@ -30,6 +29,8 @@ handlers:
   static_files: index.html
   upload: index.html
   secure: always
+  http_headers:
+    Content-Security-Policy: script-src 'self'; object-src 'self'
 
 # In case someone tries to visit the page explicitly;
 # also makes cache manifest file generation simpler.
@@ -37,15 +38,27 @@ handlers:
   static_files: index.html
   upload: index.html
   secure: always
+  http_headers:
+    Content-Security-Policy: script-src 'self'; object-src 'self'
 
-- url: /icons
-  static_dir: icons
+- url: /assets/source_sans_pro-latin_ext.woff
+  static_files: assets/source_sans_pro-latin_ext.woff
+  upload: assets/source_sans_pro-latin_ext.woff
   secure: always
 
-- url: /jquery.mobile
-  static_dir: jquery.mobile
+- url: /assets/startup.js
+  static_files: assets/startup.js
+  upload: assets/startup.js
   secure: always
 
-- url: /oplop
-  static_dir: oplop
+- url: /assets/icons
+  static_dir: assets/icons
+  secure: always
+
+- url: /assets/jquery.mobile
+  static_dir: assets/jquery.mobile
+  secure: always
+
+- url: /assets/oplop
+  static_dir: assets/oplop
   secure: always

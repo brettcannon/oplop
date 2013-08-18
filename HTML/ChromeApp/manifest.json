@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+
+    "name": "Oplop",
+    "description": "A web app for creating consistent account passwords from nicknames and a master password.",
+    "version": "2010.13.8.0",
+
+    "icons": {
+        "128": "assets/icons/icon128.png"
+    },
+
+    "app": {
+        "launch": {
+            "local_path": "index.html"
+        }
+    }
+}
