@@ -7,7 +7,7 @@
          url(source_sans_pro-latin_ext.woff) format('woff');
 }
 
-#logo {
+.logo {
     min-height: 16px;
     max-height: 64px;
 
