@@ -47,24 +47,6 @@ handlers:
     X-Frame-Options: deny
     Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-- url: /assets/source_sans_pro-latin_ext.woff
-  static_files: assets/source_sans_pro-latin_ext.woff
-  upload: assets/source_sans_pro-latin_ext.woff
-  secure: always
-
-- url: /assets/startup.js
-  static_files: assets/startup.js
-  upload: assets/startup.js
-  secure: always
-
-- url: /assets/icons
-  static_dir: assets/icons
-  secure: always
-
-- url: /assets/jquery.mobile
-  static_dir: assets/jquery.mobile
-  secure: always
-
-- url: /assets/oplop
-  static_dir: assets/oplop
+- url: /assets
+  static_dir: assets
   secure: always
