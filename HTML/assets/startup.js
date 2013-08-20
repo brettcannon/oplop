@@ -1,6 +1,9 @@
 $(function() {
     $.mobile.defaultPageTransition = 'none';
 
+    $('input').attr('autocapitalize', 'off').attr('autocorrect', 'off');
+    $('input[type="password"]').attr('autocomplete', 'off');
+
     $('#newNickname').click(function() {
         $('#newNicknameContainer').css('display', 'none');
         $('#validateMasterPassword').css('display', 'inline').focus();
