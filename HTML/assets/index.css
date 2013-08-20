@@ -1,0 +1,42 @@
+/* http://www.google.com/fonts#UsePlace:use/Collection:Source+Sans+Pro */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'),
+         url(source_sans_pro-latin_ext.woff) format('woff');
+}
+
+#logo {
+    min-height: 16px;
+    max-height: 64px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Start with the validating master password field hidden */
+#validateMasterPassword {
+    display: none;
+}
+
+.ui-icon-gplus {
+    background-image: url("icons/gplus-18.png");
+}
+
+/* TODO: once Chrome 28 is stable, remove -webkit line. */
+@media
+only screen and (min-resolution: 2dppx),
+only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-icon-gplus {
+        background-image: url("icons/gplus-36.png");
+        background-size: 18px 18px;
+    }
+}
+
+/* Use IDs over 'input' selector to override jQuery Mobile theming. */
+#nickname, #masterPassword, #validateMasterPassword, #accountPassword {
+    inherit: none;
+    font-family: 'Source Sans Pro', monospace;
+}
