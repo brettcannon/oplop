@@ -37,6 +37,5 @@ only screen and (-webkit-min-device-pixel-ratio: 2) {
 
 /* Use IDs over 'input' selector to override jQuery Mobile theming. */
 #nickname, #masterPassword, #validateMasterPassword, #accountPassword {
-    inherit: none;
     font-family: 'Source Sans Pro', monospace;
 }
