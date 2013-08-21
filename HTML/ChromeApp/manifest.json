@@ -14,5 +14,7 @@
         "launch": {
             "local_path": "index.html"
         }
-    }
+    },
+
+    "permissions": ["clipboardWrite"]
 }
