@@ -28,6 +28,9 @@ $(function() {
         $(':password, :text').val('');
 
         var setAccountPassword = function(pwd) {
+            // If you don't reset the selection range then focus() grabs the
+            // physical box.
+            window.getSelection().removeAllRanges();
             return $('#accountPassword').val(pwd).focus();
         }
 
@@ -38,13 +41,15 @@ $(function() {
                 // what the account password was (if need be).
                 setAccountPassword('... copied to clipboard').select();
             } else {
-                window.getSelection().removeAllRanges();
-                // Simply calling focus() select the physical input box.
                 setAccountPassword(accountPassword);
             }
         }
-        catch (e if e.name == 'NS_ERROR_FAILURE') {  // Firefox throws an exception.
-            setAccountPassword(accountPassword);
+        catch (e) {  // Firefox throws an exception.
+            if (e.name != 'NS_ERROR_FAILURE') {
+                throw e;
+            } else {
+                setAccountPassword(accountPassword);
+            }
         }
     });
 
