@@ -27,7 +27,30 @@ $(function() {
                                     $('#masterPassword').val());
         $(':password, :text').val('');
 
-        $('#accountPassword').val(accountPassword).focus();
+        var setAccountPassword = function(pwd) {
+            // If you don't reset the selection range then focus() grabs the
+            // physical box.
+            window.getSelection().removeAllRanges();
+            return $('#accountPassword').val(pwd).focus();
+        }
+
+        setAccountPassword(accountPassword).select();
+        try {
+            if (document.execCommand('copy')) {
+                // Set to new text and select it so people can paste over it to see
+                // what the account password was (if need be).
+                setAccountPassword('... copied to clipboard').select();
+            } else {
+                setAccountPassword(accountPassword);
+            }
+        }
+        catch (e) {  // Firefox throws an exception.
+            if (e.name != 'NS_ERROR_FAILURE') {
+                throw e;
+            } else {
+                setAccountPassword(accountPassword);
+            }
+        }
     });
 
     $('.startOver').click(function() {
