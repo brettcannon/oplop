@@ -47,6 +47,11 @@ handlers:
     X-Frame-Options: deny
     Strict-Transport-Security: max-age=31536000; includeSubDomains
 
+- url: /impl.js
+  static_files: impl.js
+  upload: impl.js
+  secure: always
+
 - url: /assets
   static_dir: assets
   secure: always
