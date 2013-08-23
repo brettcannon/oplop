@@ -6,16 +6,21 @@ function setAccountPassword(pwd) {
 }
 
 $(function() {
+    /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
 
+    /* Turn off all automatic formatting stuff from iOS.
+       Leave on auto-complete for nicknames only. */
     $('input').attr('autocapitalize', 'off').attr('autocorrect', 'off');
     $('input[type="password"]').attr('autocomplete', 'off');
 
+    /* When "New Nickname" checkbox is clicked ... */
     $('#newNickname').click(function() {
         $('#newNicknameContainer').css('display', 'none');
         $('#validateMasterPassword').css('display', 'inline').focus();
     });
 
+    /* When "Create account password" is clicked ... */
     $('#createAccountPassword').click(function() {
         if ($('#newNickname')[0].checked) {
             if ($('#masterPassword').val() !==
@@ -40,6 +45,7 @@ $(function() {
         }
     });
 
+    /* When "Start Over" is clicked ... */
     $('.startOver').click(function() {
         window.location = window.location;
     });
