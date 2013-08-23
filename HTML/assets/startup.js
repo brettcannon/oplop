@@ -49,4 +49,13 @@ $(function() {
     $('.startOver').click(function() {
         window.location = window.location;
     });
+
+    var nicknameLinkKey = 'nickname link';
+    /* Pre-populate "Link to nickname". */
+    $('#nicknameLink')[0].value = getStorage(nicknameLinkKey);
+
+    /* When something changes in "Link to nickname" ... */
+    $('#nicknameLink').change(function(event) {
+        setStorage(nicknameLinkKey, event.target.value);
+    });
 });
