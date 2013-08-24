@@ -5,7 +5,7 @@ import os
 
 
 SYMLINKS = ['index.html', 'assets']
-ZIPFILE_EXTRAS = ['manifest.json']
+ZIPFILE_EXTRAS = ['manifest.json', 'impl.js']
 ZIPFILE_TARGET = os.path.join('../oplop-chrome_app.zip')
 NINJA_HEADER = """
 rule copy_file
