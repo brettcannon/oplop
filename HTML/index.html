@@ -43,7 +43,7 @@
         </header>
 
         <div data-role=content>
-            <label>Nickname:
+            <label><span class="linkToNicknames">Nickname</span>:
                 <input id="nickname" type=text required autofocus
                        placeholder="E.g., amazon">
             </label>
@@ -52,7 +52,7 @@
                     <input id="masterPassword" required type=password
                            placeholder="Should be long and unguessable">
                 </label>
-                <div  id="newNicknameContainer">
+                <div id="newNicknameContainer">
                     <label>
                         <input id="newNickname" type=checkbox data-mini=true>
                         New nickname?
@@ -65,14 +65,25 @@
         </div>
         <footer data-role=footer class="ui-bar" data-position="fixed">
             <span data-role="controlgroup" data-type="horizontal">
-                <button class="startOver" data-icon="back">Start Over</button>
                 <a href="https://github.com/brettcannon/oplop"
                    data-icon="info">Help</a>
-                <a href="https://plus.google.com/107738569015002517928" rel="publisher"
-                   data-icon="gplus">+Oplop</a>
-            </span>
+                <a href="https://plus.google.com/107738569015002517928"
+                   rel="publisher" data-icon="gplus">+Oplop</a>
+                <a href="#optionsPanel" data-icon="gear">Options</a>
 
+            </span>
         </footer>
+
+        <div data-role=panel id="optionsPanel" data-display=overlay>
+            <div id="nicknameLinkContainer">
+                <label>Link to nicknames
+                    <input id="nicknamesLink" type=text
+                           placeholder="E.g., https://drive.google.com">
+                </label>
+                <p><a href="#mainPage" data-rel="close"
+                      data-role=button data-icon=delete>Close</a>
+            </div>
+        </div>
     </div>
 
     <div data-role=page id="accountPasswordPage" data-theme="d">
@@ -81,7 +92,7 @@
         </header>
         <div data-role=content>
             <label>
-                Account password:
+                <span class="linkToNicknames">Account password</span>:
                 <input id="accountPassword" type=text
                        placeholder="... will appear here">
             </label>
@@ -89,11 +100,11 @@
 
         <footer data-role=footer class="ui-bar" data-position="fixed">
             <span data-role="controlgroup" data-type="horizontal">
-                <button class="startOver" data-icon="back">Start Over</button>
                 <a href="https://github.com/brettcannon/oplop"
                    data-icon="info">Help</a>
-                <a href="https://plus.google.com/107738569015002517928" rel="publisher"
-                   data-icon="gplus">+Oplop</a>
+                <a href="https://plus.google.com/107738569015002517928"
+                   rel="publisher" data-icon="gplus">+Oplop</a>
+                <button class="startOver" data-icon="back">Start Over</button>
             </span>
         </footer>
     </div>
