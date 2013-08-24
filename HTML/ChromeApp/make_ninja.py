@@ -18,7 +18,7 @@ rule make_zipfile
 
 
 def find_files(paths):
-    """Find all files, starting at .., as specified by 'paths'.
+    """Find all files, starting at '..', as specified by 'paths'.
 
     If something in 'paths' is a directory, then recursively find all files in
     that directory.
@@ -60,6 +60,15 @@ def create_zip_rule(target, paths):
     return 'build {}: make_zipfile {}'.format(target, ' '.join(paths))
 
 
+def see_what_is_missing(have_so_far):
+    """Alert the user to what files are not being included in the zip file."""
+    for dirpath, dirnames, filenames in os.walk('.'):
+        for filename in filenames:
+            path = os.path.join(dirpath, filename)[2:]
+            if path not in all_files:
+                print('Ignoring', path)
+
+
 if __name__ == '__main__':
     to_ignore = [ZIPFILE_TARGET, 'build.ninja'] + SYMLINKS
     check_gitignore(*to_ignore)
@@ -67,7 +76,9 @@ if __name__ == '__main__':
     build_file = [NINJA_HEADER]
     for path in rel_paths:
         build_file.append(create_copy_rule(path))
-    zipfile_rule = create_zip_rule(ZIPFILE_TARGET, ZIPFILE_EXTRAS[:]+rel_paths)
+    all_files = ZIPFILE_EXTRAS[:]+rel_paths
+    see_what_is_missing(all_files)
+    zipfile_rule = create_zip_rule(ZIPFILE_TARGET, all_files)
     build_file.append(zipfile_rule)
     with open('build.ninja', 'w') as file:
         file.write('\n'.join(build_file))
