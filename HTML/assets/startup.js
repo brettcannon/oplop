@@ -60,11 +60,14 @@ $(function() {
 
     var nicknamesLinkKey = 'nicknames link';
     /* Pre-populate "Link to nickname". */
-    var nicknamesHref = getStorage(nicknamesLinkKey);
-    if (nicknamesHref) {
-        $('#nicknamesLink')[0].value = nicknamesHref;
-        setNicknamesLink(nicknamesHref);
+    getStorage(nicknamesLinkKey, function(items) {
+        var href = items[nicknamesLinkKey];
+        if (href) {
+            $('#nicknamesLink')[0].value = href;
+            setNicknamesLink(href);
     }
+    });
+
 
     /* When something changes in "Link to nickname" ... */
     $('#nicknamesLink').change(function(event) {
