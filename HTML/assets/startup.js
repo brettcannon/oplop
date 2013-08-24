@@ -50,12 +50,30 @@ $(function() {
         window.location = window.location;
     });
 
-    var nicknameLinkKey = 'nickname link';
+    /* Create/set the href to nicknames. */
+    function setNicknamesLink(href) {
+        var linkToNicknamesClass = 'linkToNicknames';
+        $('span.'+linkToNicknamesClass).removeClass(linkToNicknamesClass)
+                .wrap('<a class="' + linkToNicknamesClass + '" target="_blank"></a>');
+        $('a.'+linkToNicknamesClass).attr('href', href);
+    }
+
+    var nicknamesLinkKey = 'nicknames link';
     /* Pre-populate "Link to nickname". */
-    $('#nicknameLink')[0].value = getStorage(nicknameLinkKey);
+    var nicknamesHref = getStorage(nicknamesLinkKey);
+    if (nicknamesHref) {
+        $('#nicknamesLink')[0].value = nicknamesHref;
+        setNicknamesLink(nicknamesHref);
+    }
 
     /* When something changes in "Link to nickname" ... */
-    $('#nicknameLink').change(function(event) {
-        setStorage(nicknameLinkKey, event.target.value);
+    $('#nicknamesLink').change(function(event) {
+        var href = event.target.value;
+        if (href == '') {
+            removeStorage(nicknamesLinkKey);
+        } else {
+            setStorage(nicknamesLinkKey, href);
+        }
+        setNicknamesLink(href);
     });
 });
