@@ -5,7 +5,9 @@ $(function() {
     disableIOSAutoStuff($('input'), $('input[type="password"]'));
 
     /* When "New Nickname" checkbox is clicked ... */
-    $('#newNickname').click(displayValidateMasterPassword);
+    var newNicknameData = {checkbox: $('#newNicknameContainer'),
+                           passwordField: $('#validateMasterPassword')};
+    $('#newNickname').click(newNicknameData, displayValidateMasterPassword);
 
     /* When "Create account password" is clicked ... */
     $('#createAccountPassword').click(createAccountPassword);

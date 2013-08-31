@@ -1,9 +1,9 @@
 describe('UI', function() {
     it('Disable iOS-specific auto-* features', function() {
-        setFixtures('<span class="fakeInput"></span> \
-                     <span class="fakeInput"></span> \
-                     <span class="fakePassword"></span> \
-                     <span class="fakePassword"></span>');
+        setFixtures('<input class="fakeInput"></span> \
+                     <input class="fakeInput"></span> \
+                     <input class="fakePassword"></span> \
+                     <input class="fakePassword"></span>');
 
         var fakeInputs = $('.fakeInput');
         var fakePasswords = $('.fakePassword');
@@ -15,11 +15,25 @@ describe('UI', function() {
         expect(fakePasswords).toHaveAttr('autocomplete', 'off');
     });
 
-    // XXX displayValidateMasterPassword (requires mock)
     // XXX createAccountPassword (requires mock)
     // XXX setAccountPassword (requires mock)
     // XXX setNicknamesLink (requires mock)
     // XXX changedNicknamesLink (requires mock)
+
+    it('Checking "New Nickname" hides the checkbox, shows 2nd password field, and focuses it', function() {
+        setFixtures('<input id="checkbox"></span> \
+                     <input id="otherPassword" style="display: none"></span>');
+        var checkbox = $('#checkbox')
+        var passwordField = $('#otherPassword');
+        var data = {checkbox: checkbox, passwordField: passwordField};
+        var clickEvent = jQuery.Event('click', {data: data});
+
+        displayValidateMasterPassword(clickEvent);
+
+        expect(checkbox).not.toBeVisible();
+        expect(passwordField).toBeVisible();
+        expect(passwordField).toBeFocused();
+    });
 
     it('"Start Over" reloads the page', function() {
         var location = 'somewhere'

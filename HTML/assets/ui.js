@@ -19,9 +19,12 @@ function disableIOSAutoStuff(inputs, passwords) {
     passwords.attr('autocomplete', 'off');
 }
 
-function displayValidateMasterPassword() {
-    $('#newNicknameContainer').css('display', 'none');
-    $('#validateMasterPassword').css('display', 'inline').focus();
+function displayValidateMasterPassword(event) {
+    var checkbox = event.data.checkbox;
+    var passwordField = event.data.passwordField;
+
+    checkbox.css('display', 'none');
+    passwordField.css('display', 'inline').focus();
 }
 
 function createAccountPassword() {
