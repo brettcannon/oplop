@@ -15,19 +15,32 @@ describe('UI', function() {
         expect(fakePasswords).toHaveAttr('autocomplete', 'off');
     });
 
-    it('Checking "New Nickname" hides the checkbox, shows 2nd password field, and focuses it', function() {
-        setFixtures('<input id="checkbox"></span> \
-                     <input id="otherPassword" style="display: none"></span>');
-        var checkbox = $('#checkbox')
-        var passwordField = $('#otherPassword');
-        var data = {checkbox: checkbox, passwordField: passwordField};
-        var clickEvent = jQuery.Event('click', {data: data});
+    describe('"New Nickname"', function() {
+        var checkbox;
+        var passwordField;
+        var clickEvent;
 
-        displayValidateMasterPassword(clickEvent);
+        beforeEach(function() {
+            setFixtures('<input id="checkbox"></span> \
+                         <input id="otherPassword" style="display: none"></span>');
+            checkbox = $('#checkbox')
+            passwordField = $('#otherPassword');
+            var data = {checkbox: checkbox, passwordField: passwordField};
+            clickEvent = jQuery.Event('click', {data: data});
+        });
 
-        expect(checkbox).not.toBeVisible();
-        expect(passwordField).toBeVisible();
-        expect(passwordField).toBeFocused();
+        it('hides the checkbox', function() {
+            displayValidateMasterPassword(clickEvent);
+
+            expect(checkbox).not.toBeVisible();
+        });
+
+        it('shows the 2nd password field and focuses it', function() {
+            displayValidateMasterPassword(clickEvent);
+
+            expect(passwordField).toBeVisible();
+            expect(passwordField).toBeFocused();
+        });
     });
 
     // XXX createAccountPassword (requires mock)
