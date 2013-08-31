@@ -68,7 +68,8 @@ function startOver(event) {
 function setNicknamesLink(href) {
     var linkToNicknamesClass = 'linkToNicknames';
     $('span.'+linkToNicknamesClass).removeClass(linkToNicknamesClass)
-            .wrap('<a data-role=none class="' + linkToNicknamesClass + '" target="_blank"></a>');
+            .wrap('<a data-role=none class="' + linkToNicknamesClass +
+                  '" target="_blank"></a>');
     $('a.'+linkToNicknamesClass).attr('href', href);
 }
 
