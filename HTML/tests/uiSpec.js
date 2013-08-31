@@ -81,8 +81,97 @@ describe('UI', function() {
         });
     });
 
-    // XXX createAccountPassword (requires mock)
-    // XXX setAccountPassword (requires mock)
+    it('setting account password', function() {
+        setFixtures('<input id="accountPassword"></input>');
+        var field = $('#accountPassword');
+
+        setAccountPassword(field, 'ABCD');
+
+        expect(field).toHaveValue('ABCD');
+        expect(field).toBeFocused();
+    });
+
+    describe('Account password creation', function() {
+        var nickname;
+        var newNickname;
+        var masterPassword;
+        var masterPasswordAgain;
+        var accountPassword;
+        var testEvent;
+
+        beforeEach(function() {
+            setFixtures('<input id="nickname"></input> \
+                         <input type="password" id="masterPassword"></input> \
+                         <input type="checkbox" id="newNickname"></input> \
+                         <input type="password" id="masterPasswordAgain"></input> \
+                         <input id="accountPassword"></input>');
+            nickname = $('#nickname');
+            newNickname = $('#newNickname');
+            masterPassword = $('#masterPassword');
+            masterPasswordAgain = $('#masterPasswordAgain');
+            accountPasswordField = $('#accountPassword');
+            var testEventData = {
+                nickname: nickname,
+                newNickname: newNickname,
+                masterPassword: masterPassword,
+                masterPasswordAgain: masterPasswordAgain,
+                accountPasswordField: accountPasswordField
+            };
+            testEvent = jQuery.Event('click', {data: testEventData});
+        });
+
+        afterEach(function() {
+            window.clipboardWrite = undefined;
+        });
+
+        it('blanks passwords on failure', function() {
+            nickname.val('nickname');
+            masterPassword.val('password');
+            masterPasswordAgain.val('pasword');
+            newNickname[0].checked = true;
+
+            createAccountPassword(testEvent, true);
+
+            expect(masterPassword).toHaveValue('');
+            expect(masterPasswordAgain).toHaveValue('');
+            expect(accountPasswordField).toHaveValue('');
+        });
+
+        it('blanks all fields on success', function() {
+            nickname.val('nickname');
+            masterPassword.val('password');
+
+            createAccountPassword(testEvent, true);
+
+            expect(masterPassword).toHaveValue('');
+            expect(nickname).toHaveValue('');
+        });
+
+        it('sets the account password', function() {
+            nickname.val('nickname');
+            masterPassword.val('password');
+            var accountPassword = oplop.accountPassword('nickname',
+                                                        'password');
+
+            createAccountPassword(testEvent, true);
+
+            expect(accountPasswordField).toHaveValue(accountPassword);
+        });
+
+        it('writes to the clipboard is available', function() {
+            window.clipboardWrite = jasmine.createSpy('clipboardWrite');
+            nickname.val('nickname');
+            masterPassword.val('password');
+            var accountPassword = oplop.accountPassword('nickname',
+                                                        'password');
+
+            createAccountPassword(testEvent, true);
+
+            expect(window.clipboardWrite).toHaveBeenCalled();
+            expect(window.clipboardWrite).toHaveBeenCalledWith(accountPassword);
+        });
+    });
+
     // XXX setNicknamesLink (requires mock)
     // XXX changedNicknamesLink (requires mock)
 

@@ -10,7 +10,13 @@ $(function() {
     $('#newNickname').click(newNicknameData, displayValidateMasterPassword);
 
     /* When "Create account password" is clicked ... */
-    $('#createAccountPassword').click(createAccountPassword);
+    var accountPasswordData = {nickname: $('#nickname'),
+                               newNickname: $('#newNickname'),
+                               masterPassword: $('#masterPassword'),
+                               masterPasswordAgain: $('#validateMasterPassword'),
+                               accountPasswordField: $('#accountPassword')};
+    $('#createAccountPassword').click(accountPasswordData,
+                                      createAccountPassword);
 
     /* When "Start Over" is clicked ... */
     $('.startOver').click(window, startOver);

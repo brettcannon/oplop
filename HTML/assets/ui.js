@@ -1,10 +1,10 @@
 var nicknamesLinkKey = 'nicknames link';
 
-function setAccountPassword(pwd) {
+function setAccountPassword(field, pwd) {
     // If you don't reset the selection range then focus() grabs the
     // physical box.
     window.getSelection().removeAllRanges();
-    $('#accountPassword').val(pwd).focus().select();
+    field.val(pwd).focus().select();
 }
 
 /**
@@ -38,25 +38,36 @@ function validateMasterPassword(firstPassword, secondPassword) {
     }
 }
 
-function createAccountPassword() {
-    if ($('#newNickname')[0].checked) {
-        var check = validateMasterPassword($('#masterPassword'),
-                                           $('#validateMasterPassword'));
+function createAccountPassword(event, suppressPageChange) {
+    var nickname = event.data.nickname;
+    var newNickname = event.data.newNickname[0].checked;
+    var masterPassword = event.data.masterPassword;
+    var masterPasswordAgain = event.data.masterPasswordAgain;
+    var accountPasswordField = event.data.accountPasswordField;
+
+    if (newNickname) {
+        var check = validateMasterPassword(masterPassword,
+                                           masterPasswordAgain);
         if (!check) {
             return;
         }
     }
 
-    $.mobile.changePage('#accountPasswordPage',
-                             {changeHash: false});
+    if (!suppressPageChange) {
+        $.mobile.changePage('#accountPasswordPage',
+                                 {changeHash: false});
+    }
 
-    var accountPassword = oplop.accountPassword($('#nickname').val(),
-                                $('#masterPassword').val());
+    var accountPassword = oplop.accountPassword(nickname.val(),
+                                                masterPassword.val());
     $(':password, :text').val('');
 
-    setAccountPassword(accountPassword);
+    setAccountPassword(accountPasswordField, accountPassword);
     if (window.clipboardWrite !== undefined) {
-        clipboardWrite(accountPassword);
+        if (clipboardWrite(accountPassword)) {
+            setAccountPassword(accountPasswordField,
+                               '... has been copied to your clipboard');
+        }
     }
 }
 
