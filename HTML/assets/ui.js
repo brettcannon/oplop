@@ -7,11 +7,16 @@ function setAccountPassword(pwd) {
     $('#accountPassword').val(pwd).focus().select();
 }
 
-function disableIOSAutoStuff() {
+/**
+    Turn off auto-* features on iOS.
+
+    The 'inputs' argument is expected to be a superset of 'passwords'.
+*/
+function disableIOSAutoStuff(inputs, passwords) {
     /* Turn off all automatic formatting stuff from iOS.
        Leave on auto-complete for nicknames only. */
-    $('input').attr('autocapitalize', 'off').attr('autocorrect', 'off');
-    $('input[type="password"]').attr('autocomplete', 'off');
+    inputs.attr('autocapitalize', 'off').attr('autocorrect', 'off');
+    passwords.attr('autocomplete', 'off');
 }
 
 function displayValidateMasterPassword() {

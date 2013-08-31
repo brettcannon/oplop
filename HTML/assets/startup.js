@@ -2,7 +2,7 @@ $(function() {
     /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
 
-    disableIOSAutoStuff();
+    disableIOSAutoStuff($('input'), $('input[type="password"]'));
 
     /* When "New Nickname" checkbox is clicked ... */
     $('#newNickname').click(displayValidateMasterPassword);
