@@ -43,6 +43,44 @@ describe('UI', function() {
         });
     });
 
+    describe('Validate master password', function() {
+        var firstField;
+        var secondField;
+
+        beforeEach(function() {
+            setFixtures('<input id="firstField"></input> \
+                         <input id ="secondField"></input>');
+        firstField = $('#firstField');
+        secondField = $('#secondField');
+        });
+
+        it('returns true if passwords match', function() {
+            firstField.val('password');
+            secondField.val('password');
+
+            var given = validateMasterPassword(firstField, secondField);
+            expect(given).toBeTruthy();
+        });
+
+        it('returns false if passwords differ', function() {
+            firstField.val('password');
+            secondField.val('pasword');
+
+            var given = validateMasterPassword(firstField, secondField);
+            expect(given).toBeFalsy();
+        });
+
+        it('blanks input fields and sets focus on first field', function() {
+            firstField.val('password');
+            secondField.val('pasword');
+
+            validateMasterPassword(firstField, secondField);
+            expect(firstField).toBeFocused();
+            expect(firstField).toHaveValue('');
+            expect(secondField).toHaveValue('');
+        });
+    });
+
     // XXX createAccountPassword (requires mock)
     // XXX setAccountPassword (requires mock)
     // XXX setNicknamesLink (requires mock)

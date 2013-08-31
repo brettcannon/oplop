@@ -27,13 +27,22 @@ function displayValidateMasterPassword(event) {
     passwordField.css('display', 'inline').focus();
 }
 
+function validateMasterPassword(firstPassword, secondPassword) {
+    if (firstPassword.val() === secondPassword.val()) {
+        return true;
+    } else {
+        firstPassword.val('');
+        secondPassword.val('');
+        firstPassword.focus();
+        return false;
+    }
+}
+
 function createAccountPassword() {
     if ($('#newNickname')[0].checked) {
-        if ($('#masterPassword').val() !==
-                $('#validateMasterPassword').val()) {
-            $('#masterPassword').val('');
-            $('#validateMasterPassword').val('');
-            $('#masterPassword').focus();
+        var check = validateMasterPassword($('#masterPassword'),
+                                           $('#validateMasterPassword'));
+        if (!check) {
             return;
         }
     }
