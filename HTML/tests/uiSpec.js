@@ -15,11 +15,6 @@ describe('UI', function() {
         expect(fakePasswords).toHaveAttr('autocomplete', 'off');
     });
 
-    // XXX createAccountPassword (requires mock)
-    // XXX setAccountPassword (requires mock)
-    // XXX setNicknamesLink (requires mock)
-    // XXX changedNicknamesLink (requires mock)
-
     it('Checking "New Nickname" hides the checkbox, shows 2nd password field, and focuses it', function() {
         setFixtures('<input id="checkbox"></span> \
                      <input id="otherPassword" style="display: none"></span>');
@@ -34,6 +29,11 @@ describe('UI', function() {
         expect(passwordField).toBeVisible();
         expect(passwordField).toBeFocused();
     });
+
+    // XXX createAccountPassword (requires mock)
+    // XXX setAccountPassword (requires mock)
+    // XXX setNicknamesLink (requires mock)
+    // XXX changedNicknamesLink (requires mock)
 
     it('"Start Over" reloads the page', function() {
         var location = 'somewhere'
