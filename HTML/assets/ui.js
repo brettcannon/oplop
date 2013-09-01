@@ -1,4 +1,6 @@
 var nicknamesLinkKey = 'nicknames link';
+var linkToNicknamesClass = 'linkToNicknames';
+
 
 function setAccountPassword(field, pwd) {
     // If you don't reset the selection range then focus() grabs the
@@ -77,7 +79,6 @@ function startOver(event) {
 
 /* Create/set the href to nicknames. */
 function setNicknamesLink(href) {
-    var linkToNicknamesClass = 'linkToNicknames';
     $('span.'+linkToNicknamesClass).removeClass(linkToNicknamesClass)
             .wrap('<a data-role=none class="' + linkToNicknamesClass +
                   '" target="_blank"></a>');

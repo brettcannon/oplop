@@ -81,14 +81,16 @@ describe('UI', function() {
         });
     });
 
-    it('setting account password', function() {
-        setFixtures('<input id="accountPassword"></input>');
-        var field = $('#accountPassword');
+    describe('Account password', function() {
+        it('can be set', function() {
+            setFixtures('<input id="accountPassword"></input>');
+            var field = $('#accountPassword');
 
-        setAccountPassword(field, 'ABCD');
+            setAccountPassword(field, 'ABCD');
 
-        expect(field).toHaveValue('ABCD');
-        expect(field).toBeFocused();
+            expect(field).toHaveValue('ABCD');
+            expect(field).toBeFocused();
+        });
     });
 
     describe('Account password creation', function() {
@@ -172,16 +174,34 @@ describe('UI', function() {
         });
     });
 
-    // XXX setNicknamesLink (requires mock)
-    // XXX changedNicknamesLink (requires mock)
+    describe('"Start Over"', function() {
+        it('reloads the page', function() {
+            var location = 'somewhere'
+            var fakeWindow = {location: location};
+            var clickEvent = jQuery.Event('click', {data: fakeWindow});
 
-    it('"Start Over" reloads the page', function() {
-        var location = 'somewhere'
-        var fakeWindow = {location: location};
-        var clickEvent = jQuery.Event('click', {data: fakeWindow});
+            startOver(clickEvent);
 
-        startOver(clickEvent);
+            expect(location).toBe(location);
+        });
+    });
 
-        expect(location).toBe(location);
+    describe('Nicknames link', function() {
+        it('creates/sets the links', function() {
+            setFixtures('<span class="' + linkToNicknamesClass +
+                        '">link</span>');
+
+            setNicknamesLink('http://www.example.com');
+
+            var links = $('a.' + linkToNicknamesClass);
+            expect(links).not.toBeEmpty();
+            expect(links).toHaveAttr('href', 'http://www.example.com');
+
+            setNicknamesLink('http://2.example.com');
+
+            expect(links).toHaveAttr('href', 'http://2.example.com');
+        });
+
+        // XXX changedNicknamesLink (requires spy)
     });
 });
