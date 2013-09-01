@@ -202,6 +202,29 @@ describe('UI', function() {
             expect(links).toHaveAttr('href', 'http://2.example.com');
         });
 
-        // XXX changedNicknamesLink (requires spy)
+        it('stores the link', function() {
+            var event = {};
+            event.target = {};
+            event.target.value = 'http://www.example.com';
+            var spy = spyOn(window, 'setStorage');
+
+            changedNicknamesLink(event);
+
+            expect(spy).toHaveBeenCalledWith(nicknamesLinkKey,
+                                             'http://www.example.com');
+        });
+
+        it('deletes the storage when unset', function() {
+            var event = {};
+            event.target = {};
+            event.target.value = '';
+            var setSpy = spyOn(window, 'setStorage');
+            var removeSpy = spyOn(window, 'removeStorage');
+
+            changedNicknamesLink(event);
+
+            expect(setSpy).not.toHaveBeenCalled();
+            expect(removeSpy).toHaveBeenCalledWith(nicknamesLinkKey);
+        });
     });
 });
