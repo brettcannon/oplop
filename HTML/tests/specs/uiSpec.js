@@ -8,7 +8,7 @@ describe('UI', function() {
         var fakeInputs = $('.fakeInput');
         var fakePasswords = $('.fakePassword');
 
-        disableIOSAutoStuff(fakeInputs, fakePasswords);
+        oplop.ui.disableIOSAutoStuff(fakeInputs, fakePasswords);
 
         expect(fakeInputs).toHaveAttr('autocapitalize', 'off');
         expect(fakeInputs).toHaveAttr('autocorrect', 'off');
@@ -30,13 +30,13 @@ describe('UI', function() {
         });
 
         it('hides the checkbox', function() {
-            displayValidateMasterPassword(clickEvent);
+            oplop.ui.displayValidateMasterPassword(clickEvent);
 
             expect(checkbox).not.toBeVisible();
         });
 
         it('shows the 2nd password field and focuses it', function() {
-            displayValidateMasterPassword(clickEvent);
+            oplop.ui.displayValidateMasterPassword(clickEvent);
 
             expect(passwordField).toBeVisible();
             expect(passwordField).toBeFocused();
@@ -58,7 +58,7 @@ describe('UI', function() {
             firstField.val('password');
             secondField.val('password');
 
-            var given = validateMasterPassword(firstField, secondField);
+            var given = oplop.ui.validateMasterPassword(firstField, secondField);
             expect(given).toBeTruthy();
         });
 
@@ -66,7 +66,7 @@ describe('UI', function() {
             firstField.val('password');
             secondField.val('pasword');
 
-            var given = validateMasterPassword(firstField, secondField);
+            var given = oplop.ui.validateMasterPassword(firstField, secondField);
             expect(given).toBeFalsy();
         });
 
@@ -74,7 +74,7 @@ describe('UI', function() {
             firstField.val('password');
             secondField.val('pasword');
 
-            validateMasterPassword(firstField, secondField);
+            oplop.ui.validateMasterPassword(firstField, secondField);
             expect(firstField).toBeFocused();
             expect(firstField).toHaveValue('');
             expect(secondField).toHaveValue('');
@@ -86,7 +86,7 @@ describe('UI', function() {
             setFixtures('<input id="accountPassword"></input>');
             var field = $('#accountPassword');
 
-            setAccountPassword(field, 'ABCD');
+            oplop.ui.setAccountPassword(field, 'ABCD');
 
             expect(field).toHaveValue('ABCD');
             expect(field).toBeFocused();
@@ -132,7 +132,7 @@ describe('UI', function() {
             masterPasswordAgain.val('pasword');
             newNickname[0].checked = true;
 
-            createAccountPassword(testEvent, true);
+            oplop.ui.createAccountPassword(testEvent, true);
 
             expect(masterPassword).toHaveValue('');
             expect(masterPasswordAgain).toHaveValue('');
@@ -143,7 +143,7 @@ describe('UI', function() {
             nickname.val('nickname');
             masterPassword.val('password');
 
-            createAccountPassword(testEvent, true);
+            oplop.ui.createAccountPassword(testEvent, true);
 
             expect(masterPassword).toHaveValue('');
             expect(nickname).toHaveValue('');
@@ -155,7 +155,7 @@ describe('UI', function() {
             var accountPassword = oplop.accountPassword('nickname',
                                                         'password');
 
-            createAccountPassword(testEvent, true);
+            oplop.ui.createAccountPassword(testEvent, true);
 
             expect(accountPasswordField).toHaveValue(accountPassword);
         });
@@ -167,7 +167,7 @@ describe('UI', function() {
             var accountPassword = oplop.accountPassword('nickname',
                                                         'password');
 
-            createAccountPassword(testEvent, true);
+            oplop.ui.createAccountPassword(testEvent, true);
 
             expect(oplop.impl.clipboardWrite).toHaveBeenCalled();
             expect(oplop.impl.clipboardWrite).toHaveBeenCalledWith(accountPassword);
@@ -180,7 +180,7 @@ describe('UI', function() {
             var fakeWindow = {location: location};
             var clickEvent = jQuery.Event('click', {data: fakeWindow});
 
-            startOver(clickEvent);
+            oplop.ui.startOver(clickEvent);
 
             expect(location).toBe(location);
         });
@@ -188,16 +188,16 @@ describe('UI', function() {
 
     describe('Nicknames link', function() {
         it('creates/sets the links', function() {
-            setFixtures('<span class="' + linkToNicknamesClass +
+            setFixtures('<span class="' + oplop.ui.linkToNicknamesClass +
                         '">link</span>');
 
-            setNicknamesLink('http://www.example.com');
+            oplop.ui.setNicknamesLink('http://www.example.com');
 
-            var links = $('a.' + linkToNicknamesClass);
+            var links = $('a.' + oplop.ui.linkToNicknamesClass);
             expect(links).not.toBeEmpty();
             expect(links).toHaveAttr('href', 'http://www.example.com');
 
-            setNicknamesLink('http://2.example.com');
+            oplop.ui.setNicknamesLink('http://2.example.com');
 
             expect(links).toHaveAttr('href', 'http://2.example.com');
         });
@@ -208,9 +208,9 @@ describe('UI', function() {
             event.target.value = 'http://www.example.com';
             var spy = spyOn(oplop.impl, 'setStorage');
 
-            changedNicknamesLink(event);
+            oplop.ui.changedNicknamesLink(event);
 
-            expect(spy).toHaveBeenCalledWith(nicknamesLinkKey,
+            expect(spy).toHaveBeenCalledWith(oplop.ui.nicknamesLinkKey,
                                              'http://www.example.com');
         });
 
@@ -221,10 +221,10 @@ describe('UI', function() {
             var setSpy = spyOn(oplop.impl, 'setStorage');
             var removeSpy = spyOn(oplop.impl, 'removeStorage');
 
-            changedNicknamesLink(event);
+            oplop.ui.changedNicknamesLink(event);
 
             expect(setSpy).not.toHaveBeenCalled();
-            expect(removeSpy).toHaveBeenCalledWith(nicknamesLinkKey);
+            expect(removeSpy).toHaveBeenCalledWith(oplop.ui.nicknamesLinkKey);
         });
     });
 });

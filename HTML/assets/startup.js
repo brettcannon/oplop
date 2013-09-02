@@ -4,12 +4,13 @@ $(function() {
     /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
 
-    disableIOSAutoStuff($('input'), $('input[type="password"]'));
+    oplop.ui.disableIOSAutoStuff($('input'), $('input[type="password"]'));
 
     /* When "New Nickname" checkbox is clicked ... */
     var newNicknameData = {checkbox: $('#newNicknameContainer'),
                            passwordField: $('#validateMasterPassword')};
-    $('#newNickname').click(newNicknameData, displayValidateMasterPassword);
+    $('#newNickname').click(newNicknameData,
+                            oplop.ui.displayValidateMasterPassword);
 
     /* When "Create account password" is clicked ... */
     var accountPasswordData = {nickname: $('#nickname'),
@@ -18,20 +19,20 @@ $(function() {
                                masterPasswordAgain: $('#validateMasterPassword'),
                                accountPasswordField: $('#accountPassword')};
     $('#createAccountPassword').click(accountPasswordData,
-                                      createAccountPassword);
+                                      oplop.ui.createAccountPassword);
 
     /* When "Start Over" is clicked ... */
-    $('.startOver').click(window, startOver);
+    $('.startOver').click(window, oplop.ui.startOver);
 
     /* Pre-populate "Link to nickname". */
-    oplop.impl.getStorage(nicknamesLinkKey, function(items) {
-        var href = items[nicknamesLinkKey];
+    oplop.impl.getStorage(oplop.ui.nicknamesLinkKey, function(items) {
+        var href = items[oplop.ui.nicknamesLinkKey];
         if (href) {
             $('#nicknamesLink')[0].value = href;
-            setNicknamesLink(href);
+            oplop.ui.setNicknamesLink(href);
     }
     });
 
     /* When something changes in "Link to nickname" ... */
-    $('#nicknamesLink').change(changedNicknamesLink);
+    $('#nicknamesLink').change(oplop.ui.changedNicknamesLink);
 });

@@ -3,11 +3,13 @@
 window.oplop = window.oplop || {};
 oplop.ui = {};
 
-var nicknamesLinkKey = 'nicknames link';
-var linkToNicknamesClass = 'linkToNicknames';
+(function() {
+
+oplop.ui.nicknamesLinkKey = 'nicknames link';
+oplop.ui.linkToNicknamesClass = 'linkToNicknames';
 
 
-function setAccountPassword(field, pwd) {
+oplop.ui.setAccountPassword = function(field, pwd) {
     // If you don't reset the selection range then focus() grabs the
     // physical box.
     window.getSelection().removeAllRanges();
@@ -19,14 +21,14 @@ function setAccountPassword(field, pwd) {
 
     The 'inputs' argument is expected to be a superset of 'passwords'.
 */
-function disableIOSAutoStuff(inputs, passwords) {
+oplop.ui.disableIOSAutoStuff = function(inputs, passwords) {
     /* Turn off all automatic formatting stuff from iOS.
        Leave on auto-complete for nicknames only. */
     inputs.attr('autocapitalize', 'off').attr('autocorrect', 'off');
     passwords.attr('autocomplete', 'off');
 }
 
-function displayValidateMasterPassword(event) {
+oplop.ui.displayValidateMasterPassword = function(event) {
     var checkbox = event.data.checkbox;
     var passwordField = event.data.passwordField;
 
@@ -34,7 +36,7 @@ function displayValidateMasterPassword(event) {
     passwordField.css('display', 'inline').focus();
 }
 
-function validateMasterPassword(firstPassword, secondPassword) {
+oplop.ui.validateMasterPassword = function(firstPassword, secondPassword) {
     if (firstPassword.val() === secondPassword.val()) {
         return true;
     } else {
@@ -45,7 +47,7 @@ function validateMasterPassword(firstPassword, secondPassword) {
     }
 }
 
-function createAccountPassword(event, suppressPageChange) {
+oplop.ui.createAccountPassword = function(event, suppressPageChange) {
     var nickname = event.data.nickname;
     var newNickname = event.data.newNickname[0].checked;
     var masterPassword = event.data.masterPassword;
@@ -53,8 +55,8 @@ function createAccountPassword(event, suppressPageChange) {
     var accountPasswordField = event.data.accountPasswordField;
 
     if (newNickname) {
-        var check = validateMasterPassword(masterPassword,
-                                           masterPasswordAgain);
+        var check = oplop.ui.validateMasterPassword(masterPassword,
+                                                    masterPasswordAgain);
         if (!check) {
             return;
         }
@@ -69,7 +71,7 @@ function createAccountPassword(event, suppressPageChange) {
                                                 masterPassword.val());
     $(':password, :text').val('');
 
-    setAccountPassword(accountPasswordField, accountPassword);
+    oplop.ui.setAccountPassword(accountPasswordField, accountPassword);
     if (oplop.impl.clipboardWrite !== undefined) {
         if (oplop.impl.clipboardWrite(accountPassword)) {
             setAccountPassword(accountPasswordField,
@@ -78,24 +80,26 @@ function createAccountPassword(event, suppressPageChange) {
     }
 }
 
-function startOver(event) {
+oplop.ui.startOver = function(event) {
     event.data.location = event.data.location;
 }
 
 /* Create/set the href to nicknames. */
-function setNicknamesLink(href) {
-    $('span.'+linkToNicknamesClass).removeClass(linkToNicknamesClass)
-            .wrap('<a data-role=none class="' + linkToNicknamesClass +
+oplop.ui.setNicknamesLink = function(href) {
+    $('span.'+oplop.ui.linkToNicknamesClass).removeClass(oplop.ui.linkToNicknamesClass)
+            .wrap('<a data-role=none class="' + oplop.ui.linkToNicknamesClass +
                   '" target="_blank"></a>');
-    $('a.'+linkToNicknamesClass).attr('href', href);
+    $('a.'+oplop.ui.linkToNicknamesClass).attr('href', href);
 }
 
-function changedNicknamesLink(event) {
+oplop.ui.changedNicknamesLink = function(event) {
         var href = event.target.value;
         if (href == '') {
-            oplop.impl.removeStorage(nicknamesLinkKey);
+            oplop.impl.removeStorage(oplop.ui.nicknamesLinkKey);
         } else {
-            oplop.impl.setStorage(nicknamesLinkKey, href);
+            oplop.impl.setStorage(oplop.ui.nicknamesLinkKey, href);
         }
-        setNicknamesLink(href);
+        oplop.ui.setNicknamesLink(href);
 }
+
+})();
