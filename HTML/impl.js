@@ -1,3 +1,5 @@
+'use strict';
+
 /* Plain HTML implementation has no special implementation "stuff". */
 
 /* Get storage data.

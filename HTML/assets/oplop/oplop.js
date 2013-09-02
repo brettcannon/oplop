@@ -1,3 +1,5 @@
+'use strict';
+
 window['goog'] = window['goog'] || {};
 window['goog'].provide = window['goog'].provide ||
                             function(ns) {window[ns] = {};};

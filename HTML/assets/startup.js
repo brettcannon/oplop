@@ -1,4 +1,6 @@
 $(function() {
+    'use strict';
+
     /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
 

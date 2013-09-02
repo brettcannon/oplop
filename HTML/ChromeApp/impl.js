@@ -1,3 +1,5 @@
+'use strict';
+
 function clipboardWrite() {
     return document.execCommand('copy');
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 var nicknamesLinkKey = 'nicknames link';
 var linkToNicknamesClass = 'linkToNicknames';
 
