@@ -24,7 +24,7 @@ $(function() {
     $('.startOver').click(window, startOver);
 
     /* Pre-populate "Link to nickname". */
-    getStorage(nicknamesLinkKey, function(items) {
+    oplop.impl.getStorage(nicknamesLinkKey, function(items) {
         var href = items[nicknamesLinkKey];
         if (href) {
             $('#nicknamesLink')[0].value = href;

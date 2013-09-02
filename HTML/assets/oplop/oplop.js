@@ -1,13 +1,6 @@
 'use strict';
 
-window['goog'] = window['goog'] || {};
-window['goog'].provide = window['goog'].provide ||
-                            function(ns) {window[ns] = {};};
-window['goog'].require = window['goog'].require || function(ns) {};
-
-goog.provide('oplop');
-
-goog.require('md5');
+window.oplop = window.oplop || {};
 
 /**
   Convert a Latin-1 string to UTF-8.

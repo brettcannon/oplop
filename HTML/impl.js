@@ -1,10 +1,15 @@
 'use strict';
 
+window.oplop = window.oplop || {};
+oplop.impl = {};
+
+(function() {
+
 /* Plain HTML implementation has no special implementation "stuff". */
 
 /* Get storage data.
    Asynchronous to make Chrome happy. */
-function getStorage(key, callback) {
+oplop.impl.getStorage = function(key, callback) {
     var value = localStorage.getItem(key);
     var items = {};
     items[key] = value;
@@ -12,11 +17,13 @@ function getStorage(key, callback) {
 }
 
 /* Store data. */
-function setStorage(key, value) {
+oplop.impl.setStorage = function(key, value) {
     return localStorage.setItem(key, value);
 }
 
 /* Remove data. */
-function removeStorage(key) {
+oplop.impl.removeStorage = function(key) {
     return localStorage.removeItem(key);
 }
+
+})();

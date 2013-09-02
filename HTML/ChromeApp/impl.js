@@ -1,19 +1,26 @@
 'use strict';
 
-function clipboardWrite() {
+window.oplop = window.oplop || {};
+oplop.impl = {};
+
+(function() {
+
+oplop.impl.clipboardWrite = function() {
     return document.execCommand('copy');
 }
 
-function getStorage(key, callback) {
+oplop.impl.getStorage = function(key, callback) {
     chrome.storage.sync.get(key, callback);
 }
 
-function setStorage(key, value) {
+oplop.impl.setStorage = function(key, value) {
     var items = {};
     items[key] = value;
     chrome.storage.sync.set(items);
 }
 
-function removeStorage(key) {
+oplop.impl.removeStorage = function(key) {
     chrome.storage.sync.remove(key);
 }
+
+})();

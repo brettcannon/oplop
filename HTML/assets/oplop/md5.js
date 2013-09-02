@@ -7,12 +7,7 @@
  * See http://pajhome.org.uk/crypt/md5 for more info.
  */
 
-window['goog'] = window['goog'] || {};
-window['goog'].provide = window['goog'].provide ||
-                            function(ns) {window[ns] = {};};
-
-goog.provide('md5');
-
+ md5 = window.md5 || {};
 
 /**
    URL-safe base 64 encoding.

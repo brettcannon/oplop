@@ -123,7 +123,7 @@ describe('UI', function() {
         });
 
         afterEach(function() {
-            window.clipboardWrite = undefined;
+            oplop.impl.clipboardWrite = undefined;
         });
 
         it('blanks passwords on failure', function() {
@@ -161,7 +161,7 @@ describe('UI', function() {
         });
 
         it('writes to the clipboard is available', function() {
-            window.clipboardWrite = jasmine.createSpy('clipboardWrite');
+            oplop.impl.clipboardWrite = jasmine.createSpy('clipboardWrite');
             nickname.val('nickname');
             masterPassword.val('password');
             var accountPassword = oplop.accountPassword('nickname',
@@ -169,8 +169,8 @@ describe('UI', function() {
 
             createAccountPassword(testEvent, true);
 
-            expect(window.clipboardWrite).toHaveBeenCalled();
-            expect(window.clipboardWrite).toHaveBeenCalledWith(accountPassword);
+            expect(oplop.impl.clipboardWrite).toHaveBeenCalled();
+            expect(oplop.impl.clipboardWrite).toHaveBeenCalledWith(accountPassword);
         });
     });
 
@@ -206,7 +206,7 @@ describe('UI', function() {
             var event = {};
             event.target = {};
             event.target.value = 'http://www.example.com';
-            var spy = spyOn(window, 'setStorage');
+            var spy = spyOn(oplop.impl, 'setStorage');
 
             changedNicknamesLink(event);
 
@@ -218,8 +218,8 @@ describe('UI', function() {
             var event = {};
             event.target = {};
             event.target.value = '';
-            var setSpy = spyOn(window, 'setStorage');
-            var removeSpy = spyOn(window, 'removeStorage');
+            var setSpy = spyOn(oplop.impl, 'setStorage');
+            var removeSpy = spyOn(oplop.impl, 'removeStorage');
 
             changedNicknamesLink(event);
 

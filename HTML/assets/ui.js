@@ -1,5 +1,8 @@
 'use strict';
 
+window.oplop = window.oplop || {};
+oplop.ui = {};
+
 var nicknamesLinkKey = 'nicknames link';
 var linkToNicknamesClass = 'linkToNicknames';
 
@@ -67,8 +70,8 @@ function createAccountPassword(event, suppressPageChange) {
     $(':password, :text').val('');
 
     setAccountPassword(accountPasswordField, accountPassword);
-    if (window.clipboardWrite !== undefined) {
-        if (clipboardWrite(accountPassword)) {
+    if (oplop.impl.clipboardWrite !== undefined) {
+        if (oplop.impl.clipboardWrite(accountPassword)) {
             setAccountPassword(accountPasswordField,
                                '... has been copied to your clipboard');
         }
@@ -90,9 +93,9 @@ function setNicknamesLink(href) {
 function changedNicknamesLink(event) {
         var href = event.target.value;
         if (href == '') {
-            removeStorage(nicknamesLinkKey);
+            oplop.impl.removeStorage(nicknamesLinkKey);
         } else {
-            setStorage(nicknamesLinkKey, href);
+            oplop.impl.setStorage(nicknamesLinkKey, href);
         }
         setNicknamesLink(href);
 }

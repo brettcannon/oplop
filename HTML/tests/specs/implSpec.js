@@ -2,30 +2,30 @@ describe('Storage implementation', function() {
     var key = 'test key';
 
     beforeEach(function () {
-        removeStorage(key);
+        oplop.impl.removeStorage(key);
     });
 
     it('can store and retrieve data', function() {
         var expected = {};
         expected[key] = 'ABCDEFG';
 
-        setStorage(key, expected[key]);
-        getStorage(key, function(given) {
+        oplop.impl.setStorage(key, expected[key]);
+        oplop.impl.getStorage(key, function(given) {
             expect(given).toEqual(expected);
         });
     });
 
     it('supports deletion', function() {
         var value;
-        getStorage(key, function(given) {
+        oplop.impl.getStorage(key, function(given) {
             value = given;
         });
         expect(value[key]).toEqual();
 
-        setStorage(key, 'ABCD');
-        removeStorage(key);
+        oplop.impl.setStorage(key, 'ABCD');
+        oplop.impl.removeStorage(key);
 
-        getStorage(key, function(given) {
+        oplop.impl.getStorage(key, function(given) {
             expect(given[key]).toEqual(null);
         });
     });
