@@ -13,6 +13,7 @@ Generate account passwords based on a nickname and a master password.
 * [webOS](http://developer.palm.com/webChannel/index.php?packageid=com.googlecode.oplop)
 * [Perl](http://search.cpan.org/~mdom/Digest-Oplop/) (third-party)
 
+[![Build Status](https://drone.io/github.com/brettcannon/oplop/status.png)](https://drone.io/github.com/brettcannon/oplop/latest) for web and CLI implementations
 
 ## Help
 
