@@ -11,26 +11,13 @@ Python/dist
 .DS_Store
 *.swp
 
-closure-compiler
-compiler.jar
-closure-linter
-
 HTML/AppEngine/build.ninja
 HTML/AppEngine/cache.manifest
 HTML/oplop-chrome_app.zip
 HTML/ChromeApp/build.ninja
 HTML/ChromeApp/index.html
 HTML/ChromeApp/assets
-
-Chrome/webapp/oplop.zip
-Chrome/webapp/biggie.js
-Chrome/webapp/webapp.html
-Chrome/webapp/css/hvga.css
-Chrome/webapp/css/index.css
-Chrome/webapp/icons/*.png
-Chrome/webapp/js/md5.js
-Chrome/webapp/js/oplop.js
-Chrome/webapp/js/ui.js
+HTML/tests/node_modules
 
 Python/.coverage
 Python/htmlcov
