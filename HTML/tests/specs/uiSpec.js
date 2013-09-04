@@ -152,8 +152,8 @@ describe('UI', function() {
         it('sets the account password', function() {
             nickname.val('nickname');
             masterPassword.val('password');
-            var accountPassword = oplop.accountPassword('nickname',
-                                                        'password');
+            var accountPassword = oplop.algorithm.accountPassword(
+                    'nickname', 'password');
 
             oplop.ui.createAccountPassword(testEvent, true);
 
@@ -164,8 +164,8 @@ describe('UI', function() {
             oplop.impl.clipboardWrite = jasmine.createSpy('clipboardWrite');
             nickname.val('nickname');
             masterPassword.val('password');
-            var accountPassword = oplop.accountPassword('nickname',
-                                                        'password');
+            var accountPassword = oplop.algorithm.accountPassword(
+                    'nickname', 'password');
 
             oplop.ui.createAccountPassword(testEvent, true);
 

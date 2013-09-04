@@ -1,6 +1,7 @@
 'use strict';
 
 window.oplop = window.oplop || {};
+oplop.algorithm = {};
 
 /**
   Convert a Latin-1 string to UTF-8.
@@ -9,7 +10,7 @@ window.oplop = window.oplop || {};
     @return {!string} UTF-8 string.
     @private
 */
-oplop.latin1_to_utf8_ = function latin1_to_utf8(text) {
+oplop.algorithm.latin1_to_utf8_ = function latin1_to_utf8(text) {
     var converted = new Array();
 
     for (var x = 0; x < text.length; x += 1) {
@@ -36,10 +37,10 @@ oplop.latin1_to_utf8_ = function latin1_to_utf8(text) {
     @param {!string} master Master password.
     @return {!string} Account password.
 */
-oplop.accountPassword = function(nickname, master) {
+oplop.algorithm.accountPassword = function(nickname, master) {
     var length = 8;
-    var utf8_master = oplop.latin1_to_utf8_(master);
-    var utf8_nickname = oplop.latin1_to_utf8_(nickname);
+    var utf8_master = oplop.algorithm.latin1_to_utf8_(master);
+    var utf8_nickname = oplop.algorithm.latin1_to_utf8_(nickname);
 
     var created_password = md5.urlsafe_base64(utf8_master + utf8_nickname);
 

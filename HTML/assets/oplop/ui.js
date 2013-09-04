@@ -67,8 +67,8 @@ oplop.ui.createAccountPassword = function(event, suppressPageChange) {
                                  {changeHash: false});
     }
 
-    var accountPassword = oplop.accountPassword(nickname.val(),
-                                                masterPassword.val());
+    var accountPassword = oplop.algorithm.accountPassword(
+            nickname.val(), masterPassword.val());
     $(':password, :text').val('');
 
     oplop.ui.setAccountPassword(accountPasswordField, accountPassword);

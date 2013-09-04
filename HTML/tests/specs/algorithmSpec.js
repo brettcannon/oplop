@@ -57,8 +57,8 @@ describe('Algorithm', function() {
     testValues.forEach(function(value, index, array) {
         it(value.why, function() {
             accountPassword =
-                    oplop.accountPassword(value.label,
-                                          value.master);
+                    oplop.algorithm.accountPassword(
+                            value.label, value.master);
             expect(accountPassword).toEqual(value.password);
 
         });
