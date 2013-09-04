@@ -25,7 +25,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-       'assets/startup.js'
+       'assets/oplop/startup.js'
     ],
 
 
