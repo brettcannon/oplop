@@ -1,4 +1,4 @@
-define(['oplop/algorithm'], function(algorithm) {
+define(['jasmine', 'oplop/algorithm'], function(jasmine, algorithm) {
 
     describe('Algorithm', function() {
 

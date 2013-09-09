@@ -1,5 +1,5 @@
-define(['jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl'],
-        function($, ui, algorithm, impl) {
+define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl'],
+        function(jasmine, $, ui, algorithm, impl) {
     describe('UI', function() {
         it('Disable iOS-specific auto-* features', function() {
             setFixtures('<input class="fakeInput"></span> \
