@@ -14,19 +14,21 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'assets/tAMD-0.1.0/*.js',  // AMD
+      'tests/*.js',  // AMD hooks
+      'assets/jquery.mobile/jquery-*.js',
+      'tests/lib/*.js',
       '*.js',
       'assets/*.js',
       'assets/oplop/*.js',
-      'assets/jquery.mobile/jquery-*.js',
-      'assets/tAMD-0.1.0/*.js',
-      'tests/lib/*.js',
       'tests/specs/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-       'assets/oplop/startup.js'
+       'assets/oplop/startup.js',
+       'assets/tests/karma.js'
     ],
 
 

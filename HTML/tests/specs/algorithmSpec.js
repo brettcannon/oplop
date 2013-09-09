@@ -1,5 +1,4 @@
 define(['jasmine', 'oplop/algorithm'], function(jasmine, algorithm) {
-
     describe('Algorithm', function() {
 
         // Inlined testdata.json as loading files dynamically
