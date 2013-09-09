@@ -1,7 +1,7 @@
 'use strict';
 
-define('oplop/ui', ['oplop/algorithm', 'oplop/impl'],
-       function(algorithm, impl) {
+define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
+       function($, algorithm, impl) {
 
     var exports = {};
 

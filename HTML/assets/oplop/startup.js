@@ -1,6 +1,6 @@
 'use strict';
 
-define(['oplop/impl', 'oplop/ui'], function(impl, ui) {
+define(['jquery', 'oplop/impl', 'oplop/ui'], function($, impl, ui) {
   $(function() {
     /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
