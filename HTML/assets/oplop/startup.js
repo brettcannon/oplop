@@ -1,16 +1,17 @@
-$(function() {
-    'use strict';
+'use strict';
 
+define(['oplop/impl', 'oplop/ui'], function(impl, ui) {
+  $(function() {
     /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
 
-    oplop.ui.disableIOSAutoStuff($('input'), $('input[type="password"]'));
+    ui.disableIOSAutoStuff($('input'), $('input[type="password"]'));
 
     /* When "New Nickname" checkbox is clicked ... */
     var newNicknameData = {checkbox: $('#newNicknameContainer'),
                            passwordField: $('#validateMasterPassword')};
     $('#newNickname').click(newNicknameData,
-                            oplop.ui.displayValidateMasterPassword);
+                            ui.displayValidateMasterPassword);
 
     /* When "Create account password" is clicked ... */
     var accountPasswordData = {nickname: $('#nickname'),
@@ -19,20 +20,21 @@ $(function() {
                                masterPasswordAgain: $('#validateMasterPassword'),
                                accountPasswordField: $('#accountPassword')};
     $('#createAccountPassword').click(accountPasswordData,
-                                      oplop.ui.createAccountPassword);
+                                      ui.createAccountPassword);
 
     /* When "Start Over" is clicked ... */
-    $('.startOver').click(window, oplop.ui.startOver);
+    $('.startOver').click(window, ui.startOver);
 
     /* Pre-populate "Link to nickname". */
-    oplop.impl.getStorage(oplop.ui.nicknamesLinkKey, function(items) {
-        var href = items[oplop.ui.nicknamesLinkKey];
+    impl.getStorage(ui.nicknamesLinkKey, function(items) {
+        var href = items[ui.nicknamesLinkKey];
         if (href) {
             $('#nicknamesLink')[0].value = href;
-            oplop.ui.setNicknamesLink(href);
+            ui.setNicknamesLink(href);
     }
     });
 
     /* When something changes in "Link to nickname" ... */
-    $('#nicknamesLink').change(oplop.ui.changedNicknamesLink);
+    $('#nicknamesLink').change(ui.changedNicknamesLink);
+  });
 });
