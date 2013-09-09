@@ -1,32 +1,34 @@
-describe('Storage implementation', function() {
-    var key = 'test key';
+define(['oplop/impl'], function(impl) {
+    describe('Storage implementation', function() {
+        var key = 'test key';
 
-    beforeEach(function () {
-        oplop.impl.removeStorage(key);
-    });
-
-    it('can store and retrieve data', function() {
-        var expected = {};
-        expected[key] = 'ABCDEFG';
-
-        oplop.impl.setStorage(key, expected[key]);
-        oplop.impl.getStorage(key, function(given) {
-            expect(given).toEqual(expected);
+        beforeEach(function () {
+            impl.removeStorage(key);
         });
-    });
 
-    it('supports deletion', function() {
-        var value;
-        oplop.impl.getStorage(key, function(given) {
-            value = given;
+        it('can store and retrieve data', function() {
+            var expected = {};
+            expected[key] = 'ABCDEFG';
+
+            impl.setStorage(key, expected[key]);
+            impl.getStorage(key, function(given) {
+                expect(given).toEqual(expected);
+            });
         });
-        expect(value[key]).toEqual();
 
-        oplop.impl.setStorage(key, 'ABCD');
-        oplop.impl.removeStorage(key);
+        it('supports deletion', function() {
+            var value;
+            impl.getStorage(key, function(given) {
+                value = given;
+            });
+            expect(value[key]).toEqual();
 
-        oplop.impl.getStorage(key, function(given) {
-            expect(given[key]).toEqual(null);
+            impl.setStorage(key, 'ABCD');
+            impl.removeStorage(key);
+
+            impl.getStorage(key, function(given) {
+                expect(given[key]).toEqual(null);
+            });
         });
     });
 });
