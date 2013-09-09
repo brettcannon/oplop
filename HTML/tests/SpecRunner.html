@@ -5,10 +5,50 @@
   <title>Oplop Spec Runner</title>
 
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.3.1/jasmine_favicon.png">
+  <!-- AMD loading -->
+  <script src="../assets/tAMD-0.1.0/define.js"></script>
+  <script src="../assets/tAMD-0.1.0/hooks.js"></script>
+  <script>
+    define.amd.modules = {};
+
+    require(['tAMD/hooks'], function(hooks) {
+      hooks.on('define', function(id, dependencies, factory) {
+        describe('Dependency resolution for ' + id, function() {
+          dependencies.forEach(function(dependency) {
+            it(dependency + ' exists', function() {
+              expect(define.amd.modules[dependency]).toBeDefined();
+            });
+          });
+        });
+
+        return [id, dependencies, factory];
+      });
+
+      hooks.on('publish', function(id, moduleValue) {
+        define.amd.modules[id] = moduleValue;
+        return [id, moduleValue];
+      });
+    });
+  </script>
+
+  <!-- Jasmine -->
   <link rel="stylesheet" type="text/css" href="lib/jasmine-1.3.1/jasmine.css">
   <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine.js"></script>
   <script type="text/javascript" src="lib/jasmine-1.3.1/jasmine-html.js"></script>
   <script src="lib/jasmine-jquery-1.5.8.js"></script>
+  <script>
+    define('jasmine', [], function() {
+      return jasmine;
+    });
+
+    define('jasmine/html', ['jasmine'], function(jasmine) {
+      return jasmine;
+    })
+
+    define('jasmine/jquery', ['jasmine'], function(jasmine) {
+      return jasmine;
+    });
+  </script>
 
   <!-- include source files here... -->
   <script src="../assets/jquery.mobile/jquery-1.10.2.min.js"></script>
@@ -23,7 +63,7 @@
   <script src="specs/uiSpec.js"></script>
 
   <script type="text/javascript">
-    (function() {
+    define(['jasmine/html'], function(jasmine) {
       var jasmineEnv = jasmine.getEnv();
       jasmineEnv.updateInterval = 1000;
 
@@ -48,7 +88,7 @@
         jasmineEnv.execute();
       }
 
-    })();
+    });
   </script>
 
 </head>

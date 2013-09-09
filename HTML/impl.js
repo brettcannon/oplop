@@ -1,29 +1,28 @@
 'use strict';
 
-window.oplop = window.oplop || {};
-oplop.impl = {};
+define('oplop/impl', [], function() {
+    var exports = {};
 
-(function() {
+    /* Plain HTML implementation has no special implementation "stuff". */
 
-/* Plain HTML implementation has no special implementation "stuff". */
+    /* Get storage data.
+       Asynchronous to make Chrome happy. */
+    exports.getStorage = function(key, callback) {
+        var value = localStorage.getItem(key);
+        var items = {};
+        items[key] = value;
+        callback(items);
+    }
 
-/* Get storage data.
-   Asynchronous to make Chrome happy. */
-oplop.impl.getStorage = function(key, callback) {
-    var value = localStorage.getItem(key);
-    var items = {};
-    items[key] = value;
-    callback(items);
-}
+    /* Store data. */
+    exports.setStorage = function(key, value) {
+        return localStorage.setItem(key, value);
+    }
 
-/* Store data. */
-oplop.impl.setStorage = function(key, value) {
-    return localStorage.setItem(key, value);
-}
+    /* Remove data. */
+    exports.removeStorage = function(key) {
+        return localStorage.removeItem(key);
+    }
 
-/* Remove data. */
-oplop.impl.removeStorage = function(key) {
-    return localStorage.removeItem(key);
-}
-
-})();
+    return exports;
+});
