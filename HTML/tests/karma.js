@@ -18,6 +18,7 @@ module.exports = function(config) {
       'assets/*.js',
       'assets/oplop/*.js',
       'assets/jquery.mobile/jquery-*.js',
+      'assets/tAMD-0.1.0/*.js',
       'tests/lib/*.js',
       'tests/specs/*.js'
     ],
