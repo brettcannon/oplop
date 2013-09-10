@@ -74,8 +74,8 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         exports.setAccountPassword(accountPasswordField, accountPassword);
         if (impl.clipboardWrite !== undefined) {
             if (impl.clipboardWrite(accountPassword)) {
-                setAccountPassword(accountPasswordField,
-                                   '... has been copied to your clipboard');
+                exports.setAccountPassword(accountPasswordField,
+                       '... has been copied to your clipboard');
             }
         }
     }
