@@ -100,7 +100,7 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
             var newNickname;
             var masterPassword;
             var masterPasswordAgain;
-            var accountPassword;
+            var accountPasswordField;
             var testEvent;
 
             beforeEach(function() {
@@ -162,8 +162,9 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
                 expect(accountPasswordField).toHaveValue(accountPassword);
             });
 
-            it('writes to the clipboard is available', function() {
+            it('writes to the clipboard if available', function() {
                 impl.clipboardWrite = jasmine.createSpy('clipboardWrite');
+                impl.clipboardWrite.andReturn(true);
                 nickname.val('nickname');
                 masterPassword.val('password');
                 var accountPassword = algorithm.accountPassword(
@@ -173,6 +174,23 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
 
                 expect(impl.clipboardWrite).toHaveBeenCalled();
                 expect(impl.clipboardWrite).toHaveBeenCalledWith(accountPassword);
+                expect(accountPasswordField).toHaveValue(
+                        '... has been copied to your clipboard');
+            });
+
+            it('displays account password if clipboard failed', function() {
+                impl.clipboardWrite = jasmine.createSpy('clipboardWrite');
+                impl.clipboardWrite.andReturn(false);
+                nickname.val('nickname');
+                masterPassword.val('password');
+                var accountPassword = algorithm.accountPassword(
+                        'nickname', 'password');
+
+                ui.createAccountPassword(testEvent, true);
+
+                expect(impl.clipboardWrite).toHaveBeenCalled();
+                expect(impl.clipboardWrite).toHaveBeenCalledWith(accountPassword);
+                expect(accountPasswordField).toHaveValue(accountPassword);
             });
         });
 
