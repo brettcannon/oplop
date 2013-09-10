@@ -3,7 +3,9 @@
 
     "name": "Oplop",
     "description": "A web app for creating consistent account passwords from nicknames and a master password.",
-    "version": "2013.8.23.1",
+    "version": "2013.9.10.0",
+
+    "offline_enabled": true,
 
     "icons": {
         "16": "assets/icons/icon016.png",
