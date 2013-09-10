@@ -1,6 +1,4 @@
-define.amd.modules = {};
-
-require(['tAMD/hooks'], function(hooks) {
+require(['tAMD/hooks', 'jasmine'], function(hooks, jasmine) {
   hooks.on('define', function(id, dependencies, factory) {
     describe('Dependency resolution for ' + id, function() {
       dependencies.forEach(function(dependency) {
@@ -11,10 +9,5 @@ require(['tAMD/hooks'], function(hooks) {
     });
 
     return [id, dependencies, factory];
-  });
-
-  hooks.on('publish', function(id, moduleValue) {
-    define.amd.modules[id] = moduleValue;
-    return [id, moduleValue];
   });
 });

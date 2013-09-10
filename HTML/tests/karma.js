@@ -15,9 +15,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'assets/tAMD-0.1.0/*.js',  // AMD
-      'tests/*.js',  // AMD hooks
+      'tests/amd-logging.js',  // Log modules loaded by AMD
       'assets/jquery.mobile/jquery-*.js',
       'tests/lib/*.js',
+      'tests/amd-testing.js',  // Verify dependencies already loaded
       '*.js',
       'assets/*.js',
       'assets/oplop/*.js',
