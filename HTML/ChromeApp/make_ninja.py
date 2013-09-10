@@ -31,9 +31,13 @@ def find_files(paths):
         elif os.path.isfile(root_path):
             rel_paths.append(path)
         else:
-            for dirpath, dirnames, filenames in os.walk(root_path, followlinks=True):
-                rel_paths.extend(os.path.join(dirpath, filename)[3:] # Skip ../
-                                  for filename in filenames)
+            for dirpath, dirnames, filenames in os.walk(root_path,
+                    followlinks=True):
+                for filename in filenames:
+                    if filename.startswith('.'):
+                        continue
+                    path = os.path.join(dirpath, filename)[3:]  # Skip ../
+                    rel_paths.append(path)
     return rel_paths
 
 
