@@ -26,13 +26,15 @@ define(['jquery', 'oplop/impl', 'oplop/ui'], function($, impl, ui) {
     $('.startOver').click(window, ui.startOver);
 
     /* Pre-populate "Link to nickname". */
-    impl.getStorage(ui.nicknamesLinkKey, function(items) {
-        var href = items[ui.nicknamesLinkKey];
-        if (href) {
-            $('#nicknamesLink')[0].value = href;
-            ui.setNicknamesLink(href);
+    if (impl.getStorage !== undefined) {
+      impl.getStorage(ui.nicknamesLinkKey, function(items) {
+          var href = items[ui.nicknamesLinkKey];
+          if (href) {
+              $('#nicknamesLink')[0].value = href;
+              ui.setNicknamesLink(href);
+        }
+      });
     }
-    });
 
     /* When something changes in "Link to nickname" ... */
     $('#nicknamesLink').change(ui.changedNicknamesLink);

@@ -93,6 +93,10 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
     }
 
     exports.changedNicknamesLink = function(event) {
+            if (impl.setStorage == undefined) {
+                alert('Implementation lacks ability to store settings!');
+            }
+
             var href = event.target.value;
             if (href == '') {
                 impl.removeStorage(exports.nicknamesLinkKey);
