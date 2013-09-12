@@ -1,11 +1,15 @@
 define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl'],
         function(jasmine, $, ui, algorithm, impl) {
+    var htmlFixture =
+           '<input id="nickname" class="fakeInput" type=text></input> \
+           <input id="newNickname"></input> \
+           <input id="masterPassword" class="fakePassword" type=password></input> \
+           <input id="masterPasswordAgain" class="fakePassword" style="display: none" type=password></input> \
+           <input id="accountPasswordField" class="fakeInput" type=password></input>'
+
     describe('UI', function() {
         it('Disable iOS-specific auto-* features', function() {
-            setFixtures('<input class="fakeInput"></span> \
-                         <input class="fakeInput"></span> \
-                         <input class="fakePassword"></span> \
-                         <input class="fakePassword"></span>');
+            setFixtures(htmlFixture);
 
             var fakeInputs = $('.fakeInput');
             var fakePasswords = $('.fakePassword');
@@ -23,10 +27,9 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
             var clickEvent;
 
             beforeEach(function() {
-                setFixtures('<input id="checkbox"></span> \
-                             <input id="otherPassword" style="display: none"></span>');
-                checkbox = $('#checkbox')
-                passwordField = $('#otherPassword');
+                setFixtures(htmlFixture);
+                checkbox = $('#newNickname')
+                passwordField = $('#masterPasswordAgain');
                 var data = {checkbox: checkbox, passwordField: passwordField};
                 clickEvent = jQuery.Event('click', {data: data});
             });
@@ -50,10 +53,9 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
             var secondField;
 
             beforeEach(function() {
-                setFixtures('<input id="firstField"></input> \
-                             <input id ="secondField"></input>');
-            firstField = $('#firstField');
-            secondField = $('#secondField');
+                setFixtures(htmlFixture);
+            firstField = $('#masterPassword');
+            secondField = $('#masterPasswordAgain');
             });
 
             it('returns true if passwords match', function() {
@@ -85,8 +87,8 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
 
         describe('Account password', function() {
             it('can be set', function() {
-                setFixtures('<input id="accountPassword"></input>');
-                var field = $('#accountPassword');
+                setFixtures(htmlFixture);
+                var field = $('#accountPasswordField');
 
                 ui.setAccountPassword(field, 'ABCD');
 
@@ -104,16 +106,12 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
             var testEvent;
 
             beforeEach(function() {
-                setFixtures('<input id="nickname"></input> \
-                             <input type="password" id="masterPassword"></input> \
-                             <input type="checkbox" id="newNickname"></input> \
-                             <input type="password" id="masterPasswordAgain"></input> \
-                             <input id="accountPassword"></input>');
+                setFixtures(htmlFixture);
                 nickname = $('#nickname');
                 newNickname = $('#newNickname');
                 masterPassword = $('#masterPassword');
                 masterPasswordAgain = $('#masterPasswordAgain');
-                accountPasswordField = $('#accountPassword');
+                accountPasswordField = $('#accountPasswordField');
                 var testEventData = {
                     nickname: nickname,
                     newNickname: newNickname,
