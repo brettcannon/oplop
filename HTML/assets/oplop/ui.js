@@ -80,8 +80,21 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         }
     }
 
-    exports.startOver = function(event) {
-        event.data.location = event.data.location;
+    /* Simulate reloading the page.
+
+        Chrome apps can't simply re-assign window.location to do an actual
+        reload, so do everything need to reset the page instead.
+    */
+    exports.startOver = function() {
+        $(':password, :text').val('');
+        $.mobile.changePage('#mainPage', {changeHash: false});
+        $('#validateMasterPassword').css('display', 'none');
+        $('#newNickname').prop('checked', false);
+        ['ui-icon-checkbox', 'ui-checkbox'].forEach(function(value) {
+            $('#newNicknameContainer .'+value+'-on').toggleClass(value+'-on')
+                .toggleClass(value+'-off');
+        });
+        $('#newNicknameContainer').css('display', 'block');
     }
 
     /* Create/set the href to nicknames. */

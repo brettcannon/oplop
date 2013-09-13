@@ -192,18 +192,6 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
             });
         });
 
-        describe('"Start Over"', function() {
-            it('reloads the page', function() {
-                var location = 'somewhere'
-                var fakeWindow = {location: location};
-                var clickEvent = jQuery.Event('click', {data: fakeWindow});
-
-                ui.startOver(clickEvent);
-
-                expect(location).toBe(location);
-            });
-        });
-
         describe('Nicknames link', function() {
             it('creates/sets the links', function() {
                 setFixtures('<span class="' + ui.linkToNicknamesClass +
