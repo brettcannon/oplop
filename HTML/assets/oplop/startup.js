@@ -23,7 +23,7 @@ define(['jquery', 'oplop/impl', 'oplop/ui'], function($, impl, ui) {
                                       ui.createAccountPassword);
 
     /* When "Start Over" is clicked ... */
-    $('.startOver').click(window, ui.startOver);
+    $('#startOver').click(window, ui.startOver);
 
     /* Pre-populate "Link to nickname". */
     if (impl.getStorage !== undefined) {
