@@ -3,28 +3,16 @@ from __future__ import absolute_import, print_function
 
 import os
 import re
+import sys
 
 import yaml
+
+sys.path.append('..')
+import ninja_syntax
 
 MAKE_NINJA_SCRIPT = __file__
 MAKE_MANIFEST_SCRIPT = 'make_manifest.py'
 MANIFEST_FILENAME = 'cache.manifest'
-
-NINJA_TEMPLATE = """
-rule make_ninja
-  generator = {make_ninja_script}
-  command = python2.7 {make_ninja_script}
-
-build build.ninja: make_ninja | {make_ninja_script} app.yaml
-
-
-rule make_manifest
-  command = python2.7 make_manifest.py --output $out $in
-
-build {cache_manifest_filename}: make_manifest {served} | {make_manifest_script} app.yaml
-
-default {cache_manifest_filename}
-"""
 
 
 def in_static_dir(filepath, static_dirs):
@@ -83,7 +71,15 @@ if __name__ == '__main__':
         pass
 
     with open('build.ninja', 'w') as file:
-        file.write(NINJA_TEMPLATE.format(make_ninja_script=MAKE_NINJA_SCRIPT,
-                make_manifest_script=MAKE_MANIFEST_SCRIPT,
-                cache_manifest_filename=MANIFEST_FILENAME,
-                served=' '.join(served)))
+        ninja = ninja_syntax.Writer(file)
+
+        ninja.rule('make_ninja', 'python2.7 ' + __file__, generator=__file__)
+        ninja.build('build.ninja', 'make_ninja',
+                    implicit=[__file__, 'app.yaml'])
+        ninja.newline()
+
+        ninja.rule('make_manifest',
+                   'python2.7 make_manifest.py --output $out $in')
+        ninja.build(MANIFEST_FILENAME, 'make_manifest', inputs=list(served),
+                    implicit=[__file__, 'app.yaml'])
+        ninja.default(MANIFEST_FILENAME)
