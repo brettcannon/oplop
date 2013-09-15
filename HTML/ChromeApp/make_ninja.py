@@ -1,20 +1,19 @@
 """Generate a build.ninja file to make up for the lack of symlink support in
-Chrome when working with an unpackaged app."""
+Chrome when working with an unpackaged app.
 
+Re-build any time files are added/removed from the base implementation.
+
+"""
 import os
+import sys
+sys.path.append('..')
+
+import ninja_syntax
 
 
 SYMLINKS = ['index.html', 'assets']
 ZIPFILE_EXTRAS = ['manifest.json', 'impl.js']
 ZIPFILE_TARGET = os.path.join('../oplop-chrome_app.zip')
-NINJA_HEADER = """
-rule copy_file
-  command = cp $in $out
-
-rule make_zipfile
-  command = zip $out $in
-
-"""
 
 
 def find_files(paths):
@@ -53,17 +52,6 @@ def check_gitignore(*check_for):
             raise ValueError(rel_path + ' not in .gitignore')
 
 
-def create_copy_rule(path):
-    """Create a ninja rule for copying the specified file from .. to the cwd."""
-    return 'build {path}: copy_file ../{path}'.format(path=path)
-
-
-def create_zip_rule(target, paths):
-    """Create a ninja rule for generating a zip file from the files in the
-    Chrome app directory."""
-    return 'build {}: make_zipfile {}'.format(target, ' '.join(paths))
-
-
 def see_what_is_missing(have_so_far):
     """Alert the user to what files are not being included in the zip file."""
     for dirpath, dirnames, filenames in os.walk('.'):
@@ -77,14 +65,19 @@ if __name__ == '__main__':
     to_ignore = [ZIPFILE_TARGET, 'build.ninja'] + SYMLINKS
     check_gitignore(*to_ignore)
     rel_paths = find_files(SYMLINKS)
-    build_file = [NINJA_HEADER]
-    for path in rel_paths:
-        build_file.append(create_copy_rule(path))
     all_files = ZIPFILE_EXTRAS[:]+rel_paths
     see_what_is_missing(all_files)
-    zipfile_rule = create_zip_rule(ZIPFILE_TARGET, all_files)
-    build_file.append(zipfile_rule)
-    with open('build.ninja', 'w') as file:
-        file.write('\n'.join(build_file))
-        file.write('\n')
 
+    with open('build.ninja', 'w') as file:
+        ninja = ninja_syntax.Writer(file)
+
+        ninja.rule('copy_file', 'cp $in $out')
+        ninja.rule('make_zipfile', 'zip $out $in')
+        ninja.newline()
+
+        ninja.comment("Copy files as Chrome won't work with symlinks")
+        for path in rel_paths:
+            ninja.build(path, 'copy_file', '../' + path)
+        ninja.newline()
+
+        ninja.build(ZIPFILE_TARGET, 'make_zipfile', all_files)
