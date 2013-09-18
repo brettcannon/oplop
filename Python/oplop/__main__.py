@@ -9,6 +9,16 @@ try:
     import win32clipboard
 except ImportError:
     win32clipboard = None
+    import ctypes
+    OpenClipboard = ctypes.windll.user32.OpenClipboard
+    EmptyClipboard = ctypes.windll.user32.EmptyClipboard
+    SetClipboardData = ctypes.windll.user32.SetClipboardData
+    CloseClipboard = ctypes.windll.user32.CloseClipboard
+    GlobalAlloc = ctypes.windll.kernel32.GlobalAlloc
+    GlobalLock = ctypes.windll.kernel32.GlobalLock
+    GlobalUnlock = ctypes.windll.kernel32.GlobalUnlock
+    GMEM_MOVEABLE = 0x0002
+    CF_UNICODETEXT = 13
 
 from . import create
 from getpass import getpass
@@ -88,14 +98,35 @@ def win32_clipboard(account_password):
     return True
 
 
+def ctypes_clipboard(account_password):
+    OpenClipboard(None)
+    EmptyClipboard()
+
+    buf = ctypes.create_unicode_buffer(account_password)
+    buflen = ctypes.sizeof(buf)
+    handle = GlobalAlloc(GMEM_MOVEABLE, buflen)
+    ptr = GlobalLock(handle)
+    ctypes.memmove(ptr, buf, buflen)
+    GlobalUnlock(handle)
+
+    SetClipboardData(CF_UNICODETEXT, handle)
+    CloseClipboard()
+    print("\nAccount password copied to the clipboard", file=sys.stderr)
+    return True
+
+
 def set_account_password(account_password, clipboard=True, stdout=True):
     if clipboard:
         if sys.platform == 'darwin':
             if osx_clipboard(account_password):
                 return True
-        elif sys.platform == 'win32' and win32clipboard is not None:
-            if win32_clipboard(account_password):
-                return True
+        elif sys.platform == 'win32':
+            if win32clipboard is not None:
+                if win32_clipboard(account_password):
+                    return True
+            else:
+                if ctypes_clipboard(account_password):
+                    return True
         elif x11_clipboard(account_password):
             return True
     if stdout:
