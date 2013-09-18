@@ -9,16 +9,6 @@ try:
     import win32clipboard
 except ImportError:
     win32clipboard = None
-    import ctypes
-    OpenClipboard = ctypes.windll.user32.OpenClipboard
-    EmptyClipboard = ctypes.windll.user32.EmptyClipboard
-    SetClipboardData = ctypes.windll.user32.SetClipboardData
-    CloseClipboard = ctypes.windll.user32.CloseClipboard
-    GlobalAlloc = ctypes.windll.kernel32.GlobalAlloc
-    GlobalLock = ctypes.windll.kernel32.GlobalLock
-    GlobalUnlock = ctypes.windll.kernel32.GlobalUnlock
-    GMEM_MOVEABLE = 0x0002
-    CF_UNICODETEXT = 13
 
 from . import create
 from getpass import getpass
@@ -99,6 +89,17 @@ def win32_clipboard(account_password):
 
 
 def ctypes_clipboard(account_password):
+    import ctypes
+    OpenClipboard = ctypes.windll.user32.OpenClipboard
+    EmptyClipboard = ctypes.windll.user32.EmptyClipboard
+    SetClipboardData = ctypes.windll.user32.SetClipboardData
+    CloseClipboard = ctypes.windll.user32.CloseClipboard
+    GlobalAlloc = ctypes.windll.kernel32.GlobalAlloc
+    GlobalLock = ctypes.windll.kernel32.GlobalLock
+    GlobalUnlock = ctypes.windll.kernel32.GlobalUnlock
+    GMEM_MOVEABLE = 0x0002
+    CF_UNICODETEXT = 13
+
     OpenClipboard(None)
     EmptyClipboard()
 
