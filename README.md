@@ -24,6 +24,13 @@ Generate account passwords based on a nickname and a master password.
 
 ## How It Works
 
+### A quick note about the robustness of Oplop
+
+Oplop uses something called [MD5](http://en.wikipedia.org/wiki/MD5) which is no longer cutting edge security technology; the project has been in existence since 2004 it can't switch to the newest technology overnight without hurting current users and a lot of work. As such, if you are worried you might be personally targeted for attack by a person, government, etc. then you should consider using a stronger approach to generate your passwords.
+
+If you would like to help move Oplop forward to use newer security technology then please consider
+[helping out](https://github.com/brettcannon/oplop/issues/14).
+
 ### In Plain English
 
 [Oplop](http://oplop.mobi) makes it easy to create unique passwords for every account you have. By using some math, Oplop only requires of you to remember a nickname and a master password to create a very safe and secure password just for you. You get to choose the nicknames you use for each of your accounts so they act as a mnemonic, letting you make sure they are memorable. And your master password you only have to choose once as you use it for every nickname you have (hence the "master" part). That means you can have safe and secure passwords for all of your accounts simply by remembering one master password and easy-to-remember nicknames for each of your accounts you use Oplop with.
