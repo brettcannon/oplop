@@ -1,10 +1,10 @@
-/* http://www.google.com/fonts#UsePlace:use/Collection:Source+Sans+Pro */
+/* http://www.google.com/fonts#ChoosePlace:select/Collection:Source+Code+Proo */
 @font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Source Sans Pro'), local('SourceSansPro-Regular'),
-         url(source_sans_pro-latin_ext.woff) format('woff');
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'),
+       url(source_code_pro-latin_ext.woff) format('woff');
 }
 
 .logo {
@@ -37,5 +37,5 @@ only screen and (-webkit-min-device-pixel-ratio: 2) {
 
 /* Use IDs over 'input' selector to override jQuery Mobile theming. */
 #nickname, #masterPassword, #validateMasterPassword, #accountPassword {
-    font-family: 'Source Sans Pro', monospace;
+    font-family: 'Source Code Pro', monospace;
 }
