@@ -13,8 +13,8 @@
     },
 
     "app": {
-        "launch": {
-            "local_path": "index.html"
+        "background": {
+            "scripts": ["background.js"]
         }
     },
 
