@@ -16,16 +16,9 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         field.val(pwd).focus().select();
     }
 
-    /**
-        Turn off auto-* features on iOS.
-
-        The 'inputs' argument is expected to be a superset of 'passwords'.
-    */
-    exports.disableIOSAutoStuff = function(inputs, passwords) {
-        /* Turn off all automatic formatting stuff from iOS.
-           Leave on auto-complete for nicknames only. */
-        inputs.attr('autocapitalize', 'off').attr('autocorrect', 'off');
-        passwords.attr('autocomplete', 'off');
+    exports.considerPasswordCopied = function(field, text) {
+        field.attr('placeholder', text);
+        field.val('');
     }
 
     exports.displayValidateMasterPassword = function(event) {
@@ -74,8 +67,8 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         exports.setAccountPassword(accountPasswordField, accountPassword);
         if (impl.clipboardWrite !== undefined) {
             if (impl.clipboardWrite(accountPassword)) {
-                exports.setAccountPassword(accountPasswordField,
-                       '... has been copied to your clipboard');
+                exports.considerPasswordCopied(accountPasswordField,
+                       '... is in your clipboard');
             }
         }
     }

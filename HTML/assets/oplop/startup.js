@@ -2,10 +2,13 @@
 
 define(['jquery', 'oplop/impl', 'oplop/ui'], function($, impl, ui) {
   $(function() {
+    /* Duplicate the header. */
+    var header = document.getElementsByTagName('header')[0].cloneNode(true);
+    var accountPasswordPage = document.getElementById('accountPasswordPage');
+    accountPasswordPage.insertBefore(header, accountPasswordPage.firstChild);
+
     /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
-
-    ui.disableIOSAutoStuff($('input'), $('input[type="password"]'));
 
     /* When "New Nickname" checkbox is clicked ... */
     var newNicknameData = {checkbox: $('#newNicknameContainer'),
