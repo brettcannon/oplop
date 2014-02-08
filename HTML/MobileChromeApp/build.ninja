@@ -12,5 +12,4 @@ build Oplop: cca_create ../ChromeApp
 
 build Oplop/plugins/com.verso.cordova.clipboard: install_plugin || Oplop
 
-build Oplop/www/manifest.mobile.json: cp manifest.mobile.json || Oplop
 build Oplop/www/impl.js: cp impl.js || Oplop
