@@ -16,6 +16,11 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         field.val(pwd).focus().select();
     }
 
+    exports.considerPasswordCopied = function(field, text) {
+        field.attr('placeholder', text);
+        field.val('');
+    }
+
     /**
         Turn off auto-* features on iOS.
 
@@ -74,8 +79,8 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         exports.setAccountPassword(accountPasswordField, accountPassword);
         if (impl.clipboardWrite !== undefined) {
             if (impl.clipboardWrite(accountPassword)) {
-                exports.setAccountPassword(accountPasswordField,
-                       '... has been copied to your clipboard');
+                exports.considerPasswordCopied(accountPasswordField,
+                       '... is in your clipboard');
             }
         }
     }
