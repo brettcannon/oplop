@@ -7,6 +7,7 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
            <input id="masterPasswordAgain" class="fakePassword" style="display: none" type=password></input> \
            <input id="accountPasswordField" class="fakeInput" type=password></input>'
 
+    describe('UI', function() {
         describe('"New Nickname"', function() {
             var checkbox;
             var passwordField;
