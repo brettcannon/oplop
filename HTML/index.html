@@ -75,12 +75,14 @@
         <div data-role=content>
             <label><span class="linkToNicknames">Nickname</span>:
                 <input id="nickname" type=text required autofocus
-                       placeholder="E.g., amazon">
+                    placeholder="E.g., amazon"
+                    autocapitalize="off" autocorrect="off">
             </label>
             <fieldset>
                 <label>Master password:
                     <input id="masterPassword" required type=password
-                           placeholder="... should be long">
+                           placeholder="... should be long"
+                           autocomplete="off">
                 </label>
                 <div id="newNicknameContainer">
                     <label>
@@ -89,7 +91,8 @@
                     </label>
                 </div>
                 <input id="validateMasterPassword" type=password
-                       placeholder="Type your master password again">
+                       placeholder="Type your master password again"
+                       autocomplete="off">
             </fieldset>
             <p><button id="createAccountPassword">Create</button></p>
         </div>
@@ -124,7 +127,8 @@
             <label>
                 <span class="linkToNicknames">Account password</span>:
                 <input id="accountPassword" type=text
-                       placeholder="... was originally here">
+                       placeholder="... was originally here"
+                       autocapitalize="off" autocorrect="off" autocomplete="off">
             </label>
         </div>
 

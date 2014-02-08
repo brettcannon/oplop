@@ -21,18 +21,6 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         field.val('');
     }
 
-    /**
-        Turn off auto-* features on iOS.
-
-        The 'inputs' argument is expected to be a superset of 'passwords'.
-    */
-    exports.disableIOSAutoStuff = function(inputs, passwords) {
-        /* Turn off all automatic formatting stuff from iOS.
-           Leave on auto-complete for nicknames only. */
-        inputs.attr('autocapitalize', 'off').attr('autocorrect', 'off');
-        passwords.attr('autocomplete', 'off');
-    }
-
     exports.displayValidateMasterPassword = function(event) {
         var checkbox = event.data.checkbox;
         var passwordField = event.data.passwordField;

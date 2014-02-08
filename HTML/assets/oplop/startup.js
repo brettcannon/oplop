@@ -10,8 +10,6 @@ define(['jquery', 'oplop/impl', 'oplop/ui'], function($, impl, ui) {
     /* For smooth transitions between screens, don't use any. */
     $.mobile.defaultPageTransition = 'none';
 
-    ui.disableIOSAutoStuff($('input'), $('input[type="password"]'));
-
     /* When "New Nickname" checkbox is clicked ... */
     var newNicknameData = {checkbox: $('#newNicknameContainer'),
                            passwordField: $('#validateMasterPassword')};
