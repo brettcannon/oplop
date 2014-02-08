@@ -1,5 +1,5 @@
 {
-  "packageId": "com.github.brettcannon.oplop",
-  "versionCode": 2014,
-  "CFBundleVersion": "2014.1.1",
+  "versionCode": 2014, 
+  "CFBundleVersion": "2014.1.1", 
+  "packageId": "com.github.brettcannon.oplop"
 }
