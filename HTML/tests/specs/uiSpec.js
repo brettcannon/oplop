@@ -172,8 +172,7 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
 
                 expect(impl.clipboardWrite).toHaveBeenCalled();
                 expect(impl.clipboardWrite).toHaveBeenCalledWith(accountPassword);
-                expect(accountPasswordField).toHaveValue(
-                        '... has been copied to your clipboard');
+                expect(accountPasswordField).toHaveValue('');
             });
 
             it('displays account password if clipboard failed', function() {
