@@ -7,9 +7,14 @@ rule install_plugin
 rule cp
     command = cp $in $out
 
+rule symlink
+    command = rm -rf $out && cd `dirname $out` && ln -s ../../../../../$in
+
 
 build Oplop: cca_create ../ChromeApp
 
 build Oplop/plugins/com.verso.cordova.clipboard: install_plugin || Oplop
 
 build Oplop/www/impl.js: cp impl.js || Oplop
+
+build Oplop/platforms/ios/Oplop/Resources/splash: symlink splash || Oplop
