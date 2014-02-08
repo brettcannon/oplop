@@ -7,20 +7,6 @@ define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl']
            <input id="masterPasswordAgain" class="fakePassword" style="display: none" type=password></input> \
            <input id="accountPasswordField" class="fakeInput" type=password></input>'
 
-    describe('UI', function() {
-        it('Disable iOS-specific auto-* features', function() {
-            setFixtures(htmlFixture);
-
-            var fakeInputs = $('.fakeInput');
-            var fakePasswords = $('.fakePassword');
-
-            ui.disableIOSAutoStuff(fakeInputs, fakePasswords);
-
-            expect(fakeInputs).toHaveAttr('autocapitalize', 'off');
-            expect(fakeInputs).toHaveAttr('autocorrect', 'off');
-            expect(fakePasswords).toHaveAttr('autocomplete', 'off');
-        });
-
         describe('"New Nickname"', function() {
             var checkbox;
             var passwordField;
