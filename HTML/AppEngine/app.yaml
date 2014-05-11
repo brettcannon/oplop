@@ -19,6 +19,10 @@ handlers:
   upload: assets/icons/icon016.png
   secure: always
 
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt
+
 - url: /cache.manifest
   mime_type: text/cache-manifest
   static_files: cache.manifest

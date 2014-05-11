@@ -12,7 +12,7 @@ import ninja_syntax
 
 
 SYMLINKS = ['index.html', 'assets']
-ZIPFILE_EXTRAS = ['manifest.json', 'impl.js']
+ZIPFILE_EXTRAS = ['manifest.json', 'background.js', 'impl.js']
 ZIPFILE_TARGET = os.path.join('../oplop-chrome_app.zip')
 
 
@@ -65,19 +65,21 @@ if __name__ == '__main__':
     to_ignore = [ZIPFILE_TARGET, 'build.ninja'] + SYMLINKS
     check_gitignore(*to_ignore)
     rel_paths = find_files(SYMLINKS)
-    all_files = ZIPFILE_EXTRAS[:]+rel_paths
+    all_files = list(sorted(ZIPFILE_EXTRAS[:]+rel_paths))
     see_what_is_missing(all_files)
 
     with open('build.ninja', 'w') as file:
         ninja = ninja_syntax.Writer(file)
 
-        ninja.rule('copy_file', 'cp $in $out')
         ninja.rule('make_zipfile', 'zip $out $in')
+        ninja.rule('sync_versions', 'python sync_versions.py $in $out')
+        ninja.newline()
         ninja.newline()
 
-        ninja.comment("Copy files as Chrome won't work with symlinks")
-        for path in rel_paths:
-            ninja.build(path, 'copy_file', '../' + path)
+        ninja.comment("Keep version numbers in sync")
+        ninja.build('manifest.mobile.json', 'sync_versions', 'manifest.json',
+                    implicit=['sync_versions.py', 'make_ninja.py'])
         ninja.newline()
 
-        ninja.build(ZIPFILE_TARGET, 'make_zipfile', all_files)
+        ninja.build(ZIPFILE_TARGET, 'make_zipfile', all_files,
+                    implicit=['make_ninja.py'])
