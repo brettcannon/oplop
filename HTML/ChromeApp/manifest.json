@@ -18,7 +18,9 @@
         "120": "assets/icons/icon120.png",
         "128": "assets/icons/icon128.png",
         "144": "assets/icons/icon144.png",
-        "152": "assets/icons/icon152.png"
+        "152": "assets/icons/icon152.png",
+        "256": "assets/icons/icon256.png",
+        "512": "assets/icons/icon512.png"
     },
 
     "app": {
