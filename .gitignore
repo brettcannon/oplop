@@ -15,8 +15,6 @@ HTML/AppEngine/build.ninja
 HTML/AppEngine/cache.manifest
 HTML/oplop-chrome_app.zip
 HTML/ChromeApp/build.ninja
-HTML/ChromeApp/index.html
-HTML/ChromeApp/assets
 HTML/MobileChromeApp/Oplop
 HTML/tests/node_modules
 
