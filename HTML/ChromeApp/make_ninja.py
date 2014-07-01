@@ -62,7 +62,7 @@ def see_what_is_missing(have_so_far):
 
 
 if __name__ == '__main__':
-    to_ignore = [ZIPFILE_TARGET, 'build.ninja'] + SYMLINKS
+    to_ignore = [ZIPFILE_TARGET, 'build.ninja']
     check_gitignore(*to_ignore)
     rel_paths = find_files(SYMLINKS)
     all_files = list(sorted(ZIPFILE_EXTRAS[:]+rel_paths))
