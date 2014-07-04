@@ -1,18 +1,44 @@
 #!/usr/bin/env python2.7
 from __future__ import absolute_import, print_function
 
+import argparse
+import datetime
+import hashlib
 import os
 import re
-import sys
 
 import yaml
 
-sys.path.append('..')
-import ninja_syntax
 
-MAKE_NINJA_SCRIPT = __file__
-MAKE_MANIFEST_SCRIPT = 'make_manifest.py'
-MANIFEST_FILENAME = 'cache.manifest'
+MANIFEST_FILE_PATH = 'cache.manifest'
+
+manifest_template="""CACHE MANIFEST
+# Created on {timestamp}
+# MD5 hash of files in hexidecimal: {md5_hash}
+CACHE:
+{filepaths}
+
+NETWORK:
+*
+"""
+
+# UTC implementation snagged from datetime docs.
+ZERO = datetime.timedelta(0)
+HOUR = datetime.timedelta(hours=1)
+
+class UTC(datetime.tzinfo):
+    """UTC"""
+
+    def utcoffset(self, dt):
+        return ZERO
+
+    def tzname(self, dt):
+        return "UTC"
+
+    def dst(self, dt):
+        return ZERO
+
+utc = UTC()
 
 
 def in_static_dir(filepath, static_dirs):
@@ -25,7 +51,11 @@ def in_static_dir(filepath, static_dirs):
         return False
 
 
-if __name__ == '__main__':
+def find_files(manifest_path=MANIFEST_FILE_PATH):
+    """Discover files to (not) use in the manifest file.
+
+    The manifest file itself is left out.
+    """
     with open('app.yaml') as file:
         gae_config = yaml.load(file)
 
@@ -52,34 +82,36 @@ if __name__ == '__main__':
             filepath = os.path.join(dirpath, filename)[len(cwd)+len(os.sep):]
             if skip_re.match(filepath):
                 skipped.add(filepath)
-                print('Skipped', filepath)
             elif filepath in static_files or in_static_dir(filepath, static_dirs):
                 served.add(filepath)
-                print('Added', filepath)
             else:
                 raise RuntimeError('{!r} is not handled'.format(filepath))
+    served.discard(manifest_path)
+    skipped.add(manifest_path)
+    return sorted(served), sorted(skipped)
 
+
+def create_manifest(file_paths, manifest_path=MANIFEST_FILE_PATH):
+    file_paths = sorted(file_paths)
+    md5_hash = hashlib.md5()
+    for input_path in file_paths:
+        with open(input_path, 'rb') as file:
+            md5_hash.update(file.read())
+
+    with open(manifest_path, 'w') as file:
+        file.write(manifest_template.format(
+                timestamp=datetime.datetime.now(utc).isoformat(),
+                md5_hash=md5_hash.hexdigest(),
+                filepaths='\n'.join(file_paths)))
+
+
+if __name__ == '__main__':
+    use, skip = find_files()
+    print('USED:')
+    for used in use:
+        print('  ', used)
     print()
-    print('Skipped:')
-    for path in sorted(skipped):
-        print('  ', path)
-
-    # Cache manifest cannot depend on itself.
-    try:
-        served.remove(MANIFEST_FILENAME)
-    except KeyError:
-        pass
-
-    with open('build.ninja', 'w') as file:
-        ninja = ninja_syntax.Writer(file)
-
-        ninja.rule('make_ninja', 'python2.7 ' + __file__, generator=__file__)
-        ninja.build('build.ninja', 'make_ninja',
-                    implicit=[__file__, 'app.yaml'])
-        ninja.newline()
-
-        ninja.rule('make_manifest',
-                   'python2.7 make_manifest.py --output $out $in')
-        ninja.build(MANIFEST_FILENAME, 'make_manifest', inputs=list(served),
-                    implicit=[__file__, 'app.yaml'])
-        ninja.default(MANIFEST_FILENAME)
+    print('SKIPPED:')
+    for skipped in skip:
+        print('  ', skipped)
+    create_manifest(use)
