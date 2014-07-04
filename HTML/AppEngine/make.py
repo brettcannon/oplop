@@ -110,7 +110,6 @@ if __name__ == '__main__':
     print('USED:')
     for used in use:
         print('  ', used)
-    print()
     print('SKIPPED:')
     for skipped in skip:
         print('  ', skipped)
