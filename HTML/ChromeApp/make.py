@@ -1,19 +1,21 @@
+#!/usr/bin/env python2.7
 """Generate a build.ninja file to make up for the lack of symlink support in
 Chrome when working with an unpackaged app.
 
 Re-build any time files are added/removed from the base implementation.
 
 """
+from __future__ import absolute_import, print_function
+
+import json
 import os
 import sys
-sys.path.append('..')
-
-import ninja_syntax
+import zipfile
 
 
 SYMLINKS = ['index.html', 'assets']
 ZIPFILE_EXTRAS = ['manifest.json', 'background.js', 'impl.js']
-ZIPFILE_TARGET = os.path.join('../oplop-chrome_app.zip')
+ZIPFILE_TARGET = os.path.join('..', 'oplop-chrome_app.zip')
 
 
 def find_files(paths):
@@ -61,25 +63,35 @@ def see_what_is_missing(have_so_far):
                 print('Ignoring', path)
 
 
+def make_zipfile(input, output):
+    with zipfile.ZipFile(output, 'w', compression=zipfile.ZIP_STORED, allowZip64=True) as file:
+        for path in input:
+            print('Zipping', path)
+            file.write(path)
+
+
+def sync_versions(main_path, mobile_path):
+    """Set versionCode and CFBundleVersion to meet version in manifest.json."""
+    with open(main_path) as file:
+        main_data = json.load(file)
+    with open(mobile_path) as file:
+        mobile_data = json.load(file)
+    version = main_data['version']
+    mobile_data['versionCode'] = int(version)
+    # Statically setting '{version}.1.1' so Oplop seems stable. =)
+    mobile_data['CFBundleVersion'] = version + '.1.1'
+    with open(mobile_path, 'w') as file:
+        json.dump(mobile_data, file, indent=2)
+        file.write('\n')
+    print('manifest.json/manifest.mobile.json synced')
+
+
 if __name__ == '__main__':
     to_ignore = [ZIPFILE_TARGET, 'build.ninja']
     check_gitignore(*to_ignore)
     rel_paths = find_files(SYMLINKS)
     all_files = list(sorted(ZIPFILE_EXTRAS[:]+rel_paths))
     see_what_is_missing(all_files)
+    make_zipfile(all_files, ZIPFILE_TARGET)
 
-    with open('build.ninja', 'w') as file:
-        ninja = ninja_syntax.Writer(file)
-
-        ninja.rule('make_zipfile', 'zip $out $in')
-        ninja.rule('sync_versions', 'python sync_versions.py $in $out')
-        ninja.newline()
-        ninja.newline()
-
-        ninja.comment("Keep version numbers in sync")
-        ninja.build('manifest.mobile.json', 'sync_versions', 'manifest.json',
-                    implicit=['sync_versions.py', 'make_ninja.py'])
-        ninja.newline()
-
-        ninja.build(ZIPFILE_TARGET, 'make_zipfile', all_files,
-                    implicit=['make_ninja.py'])
+    sync_versions('manifest.json', 'manifest.mobile.json')
