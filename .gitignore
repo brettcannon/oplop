@@ -1,5 +1,3 @@
-.ninja_*
-.sconsign*
 *.pyc
 *.pyo
 *.log
@@ -11,10 +9,8 @@ Python/dist
 .DS_Store
 *.swp
 
-HTML/AppEngine/build.ninja
 HTML/AppEngine/cache.manifest
 HTML/oplop-chrome_app.zip
-HTML/ChromeApp/build.ninja
 HTML/MobileChromeApp/Oplop
 HTML/MobileChromeApp/app_copy
 HTML/tests/node_modules
