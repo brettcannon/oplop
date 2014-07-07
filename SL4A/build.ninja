@@ -1,4 +1,0 @@
-rule make_qr
-    command = python3 qr_code.py $in $out
-
-build qr_code.png: make_qr oplop.min.py
