@@ -7,9 +7,6 @@ $(APP)/plugins/com.verso.cordova.clipboard: $(APP)
 $(APP)/platforms/ios/Oplop/Resources/splash: splash
 	rm -rf $@ && cd `dirname $@` && ln -s ../../../../../$<
 
-$(APP)/www/impl.js: impl.js
-	cp $< $@
-
 $(APP): $(APP_COPY)
 	cca create $(APP) --ios --android --copy-from=$<
 
@@ -18,6 +15,7 @@ $(APP_COPY)/manifest.mobile.json: ../ChromeApp/manifest.mobile.json
 
 $(APP_COPY): ../oplop-chrome_app.zip
 	unzip $< -d $@
+	cp impl.js $@
 
 clean:
 	rm -rf $(APP) $(APP_COPY)
