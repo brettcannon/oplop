@@ -6,6 +6,7 @@ Generate account passwords based on a nickname and a master password.
 
 * [Web](https://oplop.appspot.com)
 * [Google Chome](https://chrome.google.com/webstore/detail/oplop/bjgihiafnlohlfegcngpknnjidiikblj)
+* [Android](https://play.google.com/store/apps/details?id=com.github.brettcannon.oplop)
 * [Emacs](https://github.com/brettcannon/oplop/wiki/Instructions-For-Emacs)
 * [SL4A](https://raw.github.com/brettcannon/oplop/master/SL4A/qr_code.png)
 * [Command-line](https://pypi.python.org/pypi/Oplop)
