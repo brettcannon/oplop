@@ -1,6 +1,9 @@
 'use strict';
 
 define('oplop/impl', [], function() {
+    // Required by jQuery Mobile, an error for Chrome packaged apps in M43.
+    history.replaceState = function() {};
+
     var exports = {};
 
     exports.clipboardWrite = function() {
