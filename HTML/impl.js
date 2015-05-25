@@ -3,7 +3,10 @@
 define('oplop/impl', [], function() {
     var exports = {};
 
-    /* Plain HTML implementation has no special implementation "stuff". */
+    /* Write to clipboard. Supported in Chrome 43. */
+    exports.clipboardWrite = function() {
+        return document.execCommand('copy');
+    }
 
     /* Get storage data.
        Asynchronous to make Chrome happy. */
