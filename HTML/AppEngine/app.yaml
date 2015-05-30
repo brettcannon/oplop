@@ -51,6 +51,11 @@ handlers:
     X-Frame-Options: deny
     Strict-Transport-Security: max-age=31536000; includeSubDomains
 
+- url: /manifest.json
+  static_files: manifest.json
+  upload: manifest.json
+  secure: always
+
 - url: /impl.js
   static_files: impl.js
   upload: impl.js
