@@ -10,12 +10,6 @@ Python/dist
 *.swp
 
 HTML/AppEngine/cache.manifest
-HTML/oplop-chrome_app.zip
-HTML/ChromeApp/build.ninja
-HTML/MobileChromeApp/*.keystore
-HTML/MobileChromeApp/android-release-keys.properties
-HTML/MobileChromeApp/Oplop
-HTML/MobileChromeApp/app_copy
 HTML/tests/node_modules
 
 Python/.coverage
