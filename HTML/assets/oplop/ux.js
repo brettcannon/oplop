@@ -1,6 +1,6 @@
 'use strict';
 
-define('oplop/impl', [], function() {
+define('oplop/ux', [], function() {
     var exports = {};
 
     /* Write to clipboard. Supported in Chrome 43. */

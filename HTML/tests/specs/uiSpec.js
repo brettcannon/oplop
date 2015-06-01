@@ -1,4 +1,4 @@
-define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/impl'],
+define(['jasmine/jquery', 'jquery', 'oplop/ui', 'oplop/algorithm', 'oplop/ux'],
         function(jasmine, $, ui, algorithm, impl) {
     var htmlFixture =
            '<input id="nickname" class="fakeInput" type=text></input> \

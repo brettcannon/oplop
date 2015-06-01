@@ -9,6 +9,7 @@ Python/dist
 .DS_Store
 *.swp
 
+HTML/cache.manifest
 HTML/tests/node_modules
 
 Python/.coverage

@@ -1,4 +1,4 @@
-define(['jasmine', 'oplop/impl'], function(jasmine, impl) {
+define(['jasmine', 'oplop/ux'], function(jasmine, impl) {
     describe('Storage implementation', function() {
         var key = 'test key';
 

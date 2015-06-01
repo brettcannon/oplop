@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'oplop/impl', 'oplop/ui'], function($, impl, ui) {
+define(['jquery', 'oplop/ux', 'oplop/ui'], function($, ux, ui) {
   $(function() {
     /* Duplicate the header. */
     var header = document.getElementsByTagName('header')[0].cloneNode(true);
@@ -29,8 +29,8 @@ define(['jquery', 'oplop/impl', 'oplop/ui'], function($, impl, ui) {
     $('#startOver').click(window, ui.startOver);
 
     /* Pre-populate "Link to nickname". */
-    if (impl.getStorage !== undefined) {
-      impl.getStorage(ui.nicknamesLinkKey, function(items) {
+    if (ux.getStorage !== undefined) {
+      ux.getStorage(ui.nicknamesLinkKey, function(items) {
           var href = items[ui.nicknamesLinkKey];
           if (href) {
               $('#nicknamesLink')[0].value = href;

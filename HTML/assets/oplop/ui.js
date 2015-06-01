@@ -1,7 +1,7 @@
 'use strict';
 
-define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
-       function($, algorithm, impl) {
+define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/ux'],
+       function($, algorithm, ux) {
 
     var exports = {};
 
@@ -65,8 +65,8 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
         $(':password, :text').val('');
 
         exports.setAccountPassword(accountPasswordField, accountPassword);
-        if (impl.clipboardWrite !== undefined) {
-            if (impl.clipboardWrite(accountPassword)) {
+        if (ux.clipboardWrite !== undefined) {
+            if (ux.clipboardWrite(accountPassword)) {
                 exports.considerPasswordCopied(accountPasswordField,
                        '... is in your clipboard');
             }
@@ -99,15 +99,15 @@ define('oplop/ui', ['jquery', 'oplop/algorithm', 'oplop/impl'],
     }
 
     exports.changedNicknamesLink = function(event) {
-            if (impl.setStorage == undefined) {
+            if (ux.setStorage == undefined) {
                 alert('Implementation lacks ability to store settings!');
             }
 
             var href = event.target.value;
             if (href == '') {
-                impl.removeStorage(exports.nicknamesLinkKey);
+                ux.removeStorage(exports.nicknamesLinkKey);
             } else {
-                impl.setStorage(exports.nicknamesLinkKey, href);
+                ux.setStorage(exports.nicknamesLinkKey, href);
             }
             exports.setNicknamesLink(href);
     }
