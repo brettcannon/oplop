@@ -7,7 +7,7 @@ gulp.task('default', ['generate-service-worker', 'manifest']);
 
 gulp.task('generate-service-worker', function(callback) {
   swPrecache({
-    staticFileGlobs: ['*.html', 'assets/**/*',
+    staticFileGlobs: ['*.{html,json}', 'assets/**/*',
         'service-worker-registration.js', 'service-worker.js']
   }, function(error, swFileContents) {
     if (error) {
@@ -22,7 +22,7 @@ gulp.task('manifest', function() {
   // is used, so have to do more of a blacklist solution than a
   // whitelist.
   gulp.src([
-          '**/*.{css,gif,html,js,png,svg,woff}',
+          '**/*.{css,gif,html,js,json,png,svg,woff}',
           '!AppEngine/**', '!tests/**', '!node_modules/**'])
       .pipe(manifest({
           exclude: ['cache.manifest', 'gulpfile.js'],
