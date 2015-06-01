@@ -1,5 +1,5 @@
 application: oplop-hrd
-version: 9
+version: 10
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -56,11 +56,16 @@ handlers:
   upload: manifest.json
   secure: always
 
-- url: /impl.js
-  static_files: impl.js
-  upload: impl.js
-  secure: always
-
 - url: /assets
   static_dir: assets
+  secure: always
+
+- url: /service-worker.js
+  static_files: service-worker.js
+  upload: service-worker.js
+  secure: always
+
+- url: /service-worker-registration.js
+  static_files: service-worker-registration.js
+  upload: service-worker-registration.js
   secure: always
