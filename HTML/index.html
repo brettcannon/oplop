@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- Keeping the app cache around until more browsers support
+     service workers. -->
 <html lang="en" manifest="cache.manifest">
 <head>
     <meta charset="utf-8">
@@ -36,6 +38,7 @@
     <link rel=apple-touch-icon-precomposed sizes="152x152" href="assets/icons/icon512.png">
 
 
+    <script src="service-worker-registration.js"></script>
     <!-- tAMD -->
     <script src="assets/tAMD-0.1.0/define.js"></script>
     <!-- jQuery Mobile -->

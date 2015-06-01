@@ -10,6 +10,8 @@ Python/dist
 *.swp
 
 HTML/cache.manifest
+HTML/service-worker.js
+HTML/node_modules
 HTML/tests/node_modules
 
 Python/.coverage
