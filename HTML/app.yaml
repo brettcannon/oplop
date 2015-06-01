@@ -11,6 +11,8 @@ skip_files:
 - ^(.*/)?.+\.py.*
 - ^(.*/)?.+\.log$
 - ^(.*/)?.+\.ninja$
+- ^tests/.+
+- ^node_modules/.+
 
 handlers:
 # Just so there can be clean logs.
