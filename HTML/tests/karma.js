@@ -19,7 +19,6 @@ module.exports = function(config) {
       'assets/jquery.mobile/jquery-*.js',
       'tests/lib/*.js',
       'tests/amd-testing.js',  // Verify dependencies already loaded
-      '*.js',
       'assets/*.js',
       'assets/oplop/*.js',
       'tests/specs/*.js'
